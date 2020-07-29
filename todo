@@ -1,3 +1,6 @@
+Important:
+    - Change to MongoDB
+
 Moderation:
     - Lockdown Command
     - List bans
@@ -50,3 +53,8 @@ Premium Features:
 
 Infractions:
     In the users file, create array of cases with the value 'true'. In the guild, get the case # in infractions and read data.
+
+BUGS:
+
+1. Admin does not overrite Mod permissions
+2. Send error message about timeout on Database

@@ -94,7 +94,7 @@ exports.run = async (client, message, args, db) => {
             }
             message.channel.send(minesweeper.start());
         }
-    });
+    }).catch(err => message.channel.send('There was an error preforming this command! Please try again in a second. (Timeout)'));
 }
 
 exports.conf = {

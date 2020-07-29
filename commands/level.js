@@ -12,7 +12,7 @@ exports.run = async (client, message, args, db) => {
 
             if(q.data().prune === true) message.delete();
         }
-    });
+    }).catch(err => message.channel.send('There was an error preforming this command! Please try again in a second. (Timeout)'));
 
     await db.collection('guilds').doc(message.guild.id).collection('users').doc(message.member.user.id).get().then(async (q) => {
         if (q.exists) {
@@ -32,7 +32,7 @@ exports.run = async (client, message, args, db) => {
 
             message.channel.send(embed);
         }
-    });
+    }).catch(err => message.channel.send('There was an error preforming this command! Please try again in a second. (Timeout)'));
 }
 
 exports.conf = {

@@ -19,7 +19,7 @@ module.exports = async (client, message) => {
             banned_words = q.data().banned_words;
 
             for(var i = 0; i < banned_words.length; i++) {
-                if(message.content.includes(banned_words[i]) && !message.startsWith(prefix)) {
+                if(message.content.includes(banned_words[i]) && !message.content.startsWith(prefix)) {
                     message.delete();
                     message.reply('Please do not use foul language on this server!')
                     if(logsEnabled === true) {

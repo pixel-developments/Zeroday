@@ -29,7 +29,7 @@ exports.run = async (client, message, args, db) => {
                 logChannel.send(logEmbed);
             }
         }
-    });
+    }).catch(err => message.channel.send('There was an error preforming this command! Please try again in a second. (Timeout)'));
 }
 
 exports.conf = {

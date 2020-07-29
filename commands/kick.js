@@ -12,7 +12,7 @@ exports.run = async (client, message, args, db) => {
 
             if (q.data().prune === true) message.delete();
         }
-    });
+    }).catch(err => message.channel.send('There was an error preforming this command! Please try again in a second. (Timeout)'));
 
     await db.collection('guilds').doc(message.guild.id).get().then(async (q) => {
         if (q.exists) {
@@ -31,7 +31,7 @@ exports.run = async (client, message, args, db) => {
                     'punishments': punishment + 1
                 })
             });
-            toKick.ban(reason);
+            toKick.kick(reason);
 
             let embed = new MessageEmbed()
                 .setAuthor('Kick', client.user.displayAvatarURL())
@@ -56,7 +56,7 @@ exports.run = async (client, message, args, db) => {
                 logChannel.send(log);
             }
         }
-    });
+    }).catch(err => message.channel.send('There was an error preforming this command! Please try again in a second. (Timeout)'));
 }
 
 exports.conf = {

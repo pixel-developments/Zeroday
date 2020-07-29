@@ -12,7 +12,7 @@ exports.run = async (client, message, args, db) => {
 
             if (q.data().prune === true) message.delete();
         }
-    });
+    }).catch(err => message.channel.send('There was an error preforming this command! Please try again in a second. (Timeout)'));
 
     if(!args[0]) return message.reply(`Invalid Arguments! | ${prefix}passwordstrength [password]`);
 

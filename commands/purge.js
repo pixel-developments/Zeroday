@@ -12,7 +12,7 @@ exports.run = async (client, message, args, db) => {
 
             if (q.data().prune === true) message.delete();
         }
-    });
+    }).catch(err => message.channel.send('There was an error preforming this command! Please try again in a second. (Timeout)'));
 
     await db.collection('guilds').doc(message.guild.id).get().then(async (q) => {
         if(q.exists) {
@@ -27,7 +27,7 @@ exports.run = async (client, message, args, db) => {
 
             message.channel.bulkDelete(args[0]).then(message.channel.send(`Messages Deleted: ${args[0]}`));
         }
-    });
+    }).catch(err => message.channel.send('There was an error preforming this command! Please try again in a second. (Timeout)'))
 }
 
 exports.conf = {
