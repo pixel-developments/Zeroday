@@ -1,0 +1,52 @@
+Moderation:
+    - Lockdown Command
+    - List bans
+    - Server Info
+    - Tempban
+    - ModMail
+    - Notes
+    - Infractions
+        - Types:
+            - 1 = Warn
+            - 2 = Mute
+            - 3 = Kick
+            - 4 = Soft ban
+            - 5 = Ban
+
+Fun Commands:
+    - Simon Says
+    - Animals
+        - Dog
+        - Cat
+        - Bird
+    - Random Fact
+    - RPS
+    - Fortune
+    - Insult
+
+General Commands:
+    - Poll
+    - Uptime
+    - Translate
+    - Music
+        - Play
+        - Pause
+        - Stop
+        - Queue
+    - XP Leaderboards
+    - Giveaway
+
+Premium Features:
+    - Music
+        - Spotify Support
+        - Shuffle Queue
+        - Bot Volume
+        - Music Trivia
+    - NSFW?
+    - Color Roles
+    - Pokemon?
+    - Hangman
+    - Trivia
+
+Infractions:
+    In the users file, create array of cases with the value 'true'. In the guild, get the case # in infractions and read data.

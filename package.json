@@ -1,0 +1,27 @@
+{
+  "name": "zeroday",
+  "version": "1.0.0",
+  "description": "Discord.js Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zuke#7080",
+  "license": "ISC",
+  "dependencies": {
+    "ascii-table": "0.0.9",
+    "discord.js": "^12.2.0",
+    "discord.js-minesweeper": "^1.0.5",
+    "dotenv": "^8.2.0",
+    "firebase": "^7.15.5",
+    "firebase-admin": "^8.13.0",
+    "mongoose": "^5.9.20",
+    "ms": "^2.1.2",
+    "nodemon": "^2.0.4",
+    "request": "^2.88.2",
+    "rss-parser": "^3.8.0",
+    "simple-youtube-api": "^5.2.1",
+    "superagent": "^5.3.1",
+    "zxcvbn": "^4.4.2"
+  }
+}
