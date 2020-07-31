@@ -21,7 +21,11 @@ exports.run = async (client, message, args, db) => {
             let mods = q.data().moderators;
             let admins = q.data().admins;
             message.member.roles.cache.forEach(role => {
-                if(!mods.includes(role.id) || !admins.includes(role.id)) return message.reply("You don't have permission to use this command!");
+                if(!mods.includes(role.id) || !admins.includes(role.id)) {
+                    break;
+                    message.reply("You don't have permission to use this command!");
+                    return;
+                }
             });
         
             if(!args[0]) return message.reply(`Invalid Arguments! | ${prefix}purge [number]`)

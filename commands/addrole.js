@@ -18,7 +18,11 @@ exports.run = async (client, message, args, db) => {
         if(q.exists) {
             let admins = q.data().admins;
             message.member.roles.cache.forEach(role => {
-                if(!admins.includes(role.id)) return message.reply("You don't have permission to use this command!");
+                if(!mods.includes(role.id) || !admins.includes(role.id)) {
+                    break;
+                    message.reply("You don't have permission to use this command!");
+                    return;
+                }
             });
             if(!message.guild.me.hasPermission("MANAGE_ROLES")) return message.reply("I don't have permission to use this command!");
 
