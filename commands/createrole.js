@@ -17,7 +17,9 @@ exports.run = async (client, message, args, db) => {
     await db.collection('guilds').doc(message.guild.id).get().then(async (q) => {
         if(q.exists) {
             let admins = q.data().admins;
-            if (!admins.includes(message.member.roles.highest.id)) return message.reply("You don't have permission to use this command!");
+            message.member.roles.forEach(role => {
+                if(!admins.includes(role.id)) return message.reply("You don't have permission to use this command!");
+            });
             if(!message.guild.me.hasPermission("MANAGE_ROLES")) return message.reply("I don't have permission to use this command!");
 
             if(args.length == 0) return message.reply(`Invalid Arguments! | ${prefix}createrole [name] [color]`)

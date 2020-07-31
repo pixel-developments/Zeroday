@@ -18,7 +18,9 @@ exports.run = async (client, message, args, db) => {
         if (q.exists) {
             let mods = q.data().moderators;
             let admins = q.data().admins;
-            if (!mods.includes(message.member.roles.highest.id) || !admins.includes(message.member.roles.highest.id)) return message.reply("You don't have permission to use this command!");
+            message.member.roles.forEach(role => {
+                if(!mods.includes(role.id) || !admins.includes(role.id)) return message.reply("You don't have permission to use this command!");
+            });
 
             let reason = args.slice(prefix.length).join(" ");
             if (args.length === 0 || !reason) return message.reply(`Invalid Arguments! | ${prefix}ban [user] [reason]`);

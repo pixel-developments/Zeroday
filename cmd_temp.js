@@ -18,9 +18,10 @@ exports.run = async (client, message, args, db) => {
         if(q.exists) {
             let dbOwner = q.data().guildOwnerID;
             let premium = q.data().premium;
-            let mods = q.data().moderators;
+            let admins = q.data().admins;
 
-            if (!mods.includes(message.member.roles.highest.id)) return message.reply("You don't have permission to use this command!");
+            if (!mods.includes(message.member.roles.highest.id) || !admins.includes(message.member.roles.highest.id)) return message.reply("You don't have permission to use this command!");
+        
         }
     });
 }
