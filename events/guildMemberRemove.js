@@ -4,9 +4,8 @@ let db = firebase.firestore();
 
 module.exports = (member) => {
     let logChannel, logsEnabled;
-    const guild = member.guild;
 
-    db.collection('guild_settings').doc(guild.id).get().then(async (q) => {
+    db.collection('guild_settings').doc(member.guild.id).get().then(async (q) => {
         if (q.exists) {
             joinleave = guild.channels.cache.find(channel => channel.name === q.data().join_leave_channel);
             let embed = new MessageEmbed()
