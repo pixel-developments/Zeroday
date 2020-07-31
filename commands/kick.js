@@ -18,13 +18,12 @@ exports.run = async (client, message, args, db) => {
         if (q.exists) {
             let mods = q.data().moderators;
             let admins = q.data().admins;
-            message.member.roles.cache.forEach(role => {
+            for(let role of message.member.roles) {
                 if(!mods.includes(role.id) || !admins.includes(role.id)) {
-                    break;
                     message.reply("You don't have permission to use this command!");
-                    return;
+                    break;
                 }
-            });
+            }
             
             let reason = args.slice(prefix.length).join(" ");
             if (args.length === 0 || !reason) return message.reply(`Invalid Arguments! | ${prefix}kick [user] [reason]`);
