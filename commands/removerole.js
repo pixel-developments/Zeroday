@@ -17,7 +17,7 @@ exports.run = async (client, message, args, db) => {
     await db.collection('guilds').doc(message.guild.id).get().then(async (q) => {
         if(q.exists) {
             let admins = q.data().admins;
-            for(let role of message.member.roles) {
+            for(let role of message.member.roles.cache) {
                 if(!admins.includes(role.id)) {
                     message.reply("You don't have permission to use this command!");
                     break;

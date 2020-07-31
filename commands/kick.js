@@ -18,7 +18,7 @@ exports.run = async (client, message, args, db) => {
         if (q.exists) {
             let mods = q.data().moderators;
             let admins = q.data().admins;
-            for(let role of message.member.roles) {
+            for(let role of message.member.roles.cache) {
                 if(!mods.includes(role.id) || !admins.includes(role.id)) {
                     message.reply("You don't have permission to use this command!");
                     break;
