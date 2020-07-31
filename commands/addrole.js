@@ -17,13 +17,10 @@ exports.run = async (client, message, args, db) => {
     await db.collection('guilds').doc(message.guild.id).get().then(async (q) => {
         if(q.exists) {
             let admins = q.data().admins;
-            for(let role of message.member.roles.cache) {
-                if(!admins.includes(role.id)) {
-                    message.reply("You don't have permission to use this command!");
-                    break;
-                }
+            if(!admins.includes(message.member.roles.highest.id)) {
+                message.reply("You don't have permission to use this command!");
+                return;
             }
-            if(!message.guild.me.hasPermission("MANAGE_ROLES")) return message.reply("I don't have permission to use this command!");
 
             if(args.length < 2) return message.reply(`Invalid Arguments! | ${prefix}addrole [user] [role]`)
             let addToUser = message.guild.member(message.mentions.users.first()) || message.guild.members.cache.get(args[0]);
