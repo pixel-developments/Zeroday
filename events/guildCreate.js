@@ -14,7 +14,8 @@ module.exports = async (client, guild) => {
         'ranks_enabled': true,
         'mute_role': 000000000000000000,
         'banned_words': [],
-        'automod_enabled': true
+        'automod_enabled': true,
+        'join_leave_channel': 'join-leave'
     });
     await db.collection('guilds').doc(guild.id).set({
         'guildID': guild.id,

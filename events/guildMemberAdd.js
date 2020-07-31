@@ -6,16 +6,17 @@ module.exports = (member) => {
     let logChannel, logsEnabled;
     const guild = member.guild;
 
-    //console.log(guild.id)
-
-    /*db.collection('guild_settings').doc(guild.id).get().then(async (q) => {
+    db.collection('guild_settings').doc(guild.id).get().then(async (q) => {
         if (q.exists) {
-            logChannel = guild.channels.cache.find(channel => channel.name === q.data().log_channel);
-            logsEnabled = q.data().logs_enabled;
+            joinleave = guild.channels.cache.find(channel => channel.name === q.data().join_leave_channel);
+            let embed = new MessageEmbed()
+                .setDescription(`${member} has joined the server!`)
+                .setColor('78f0ee')
+            joinleave.send(embed);
         }
     });
 
-    db.collection('alert_users').doc(member.user.id).get().then(q => {
+    /*db.collection('alert_users').doc(member.user.id).get().then(q => {
         if(!q.exists) return;
         let map = q.data();
 
