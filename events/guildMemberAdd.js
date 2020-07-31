@@ -7,9 +7,9 @@ module.exports = (client, member) => {
 
     db.collection('guild_settings').doc(member.guild.id).get().then(async (q) => {
         if (q.exists) {
-            logChannel = guild.channels.cache.find(channel => channel.name === q.data().log_channel);
+            logChannel = member.guild.channels.cache.find(channel => channel.name === q.data().log_channel);
             logsEnabled = q.data().logs_enabled;
-            joinleave = guild.channels.cache.find(channel => channel.name === q.data().join_leave_channel);
+            joinleave = member.guild.channels.cache.find(channel => channel.name === q.data().join_leave_channel);
             let embed = new MessageEmbed()
                 .setDescription(`${member} has joined the server!`)
                 .setColor('78f0ee')

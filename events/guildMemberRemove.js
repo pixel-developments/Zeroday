@@ -6,7 +6,7 @@ module.exports = (client, member) => {
 
     db.collection('guild_settings').doc(member.guild.id).get().then(async (q) => {
         if (q.exists) {
-            joinleave = guild.channels.cache.find(channel => channel.name === q.data().join_leave_channel);
+            joinleave = member.guild.channels.cache.find(channel => channel.name === q.data().join_leave_channel);
             let embed = new MessageEmbed()
                 .setDescription(`${member} has left the server!`)
                 .setColor('78f0ee')
