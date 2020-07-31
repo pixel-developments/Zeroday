@@ -13,6 +13,7 @@ module.exports = (client, member) => {
             let embed = new MessageEmbed()
                 .setDescription(`${member} has joined the server!`)
                 .setColor('78f0ee')
+                .setFooter(`Member #${member.guild.memberCount}`)
             joinleave.send(embed);
         }
     });
