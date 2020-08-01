@@ -12,7 +12,15 @@ exports.run = async (client, message, args, db) => {
 
             if (q.data().prune === true) message.delete();
         }
-    }).catch(err => message.channel.send('There was an error preforming this command! Please try again in a second. (Timeout)'));
+    }).catch(err => {
+        const errEmbed = new MessageEmbed()
+            .setAuthor('Error!', 'https://cdn0.iconfinder.com/data/icons/shift-free/32/Error-512.png')
+            .setDescription('An error occured while preforming this command!')
+            .addField(`Error`, err.name)
+            .addField('Description', err.description)
+            .setFooter('Please report this back to Zuke on the [ZeroDay Support Server](https://discord.gg/6pjvxpR)')
+        message.channel.send(errEmbed);
+    });
 
     await db.collection('guilds').doc(message.guild.id).get().then(async (q) => {
         if(q.exists) {
@@ -43,7 +51,15 @@ exports.run = async (client, message, args, db) => {
                 logChannel.send(logEmbed);
             }
         }
-    }).catch(err => message.channel.send('There was an error preforming this command! Please try again in a second. (Timeout)'));
+    }).catch(err => {
+        const errEmbed = new MessageEmbed()
+            .setAuthor('Error!', 'https://cdn0.iconfinder.com/data/icons/shift-free/32/Error-512.png')
+            .setDescription('An error occured while preforming this command!')
+            .addField(`Error`, err.name)
+            .addField('Description', err.description)
+            .setFooter('Please report this back to Zuke on the [ZeroDay Support Server](https://discord.gg/6pjvxpR)')
+        message.channel.send(errEmbed);
+    });
 }
 
 exports.conf = {
