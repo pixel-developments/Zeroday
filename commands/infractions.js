@@ -25,15 +25,10 @@ exports.run = async (client, message, args, db) => {
 
             if(args[0] === "search") {
                 let toSearch = message.guild.member(message.mentions.users.first()) || message.guild.members.cache.get(args[1]);
-                let inf = await db.collection('guilds').doc(message.guild.id).collection('users').doc(toSearch.id).collection('infractions').get(doc => {
-                    let temp = [];
-                    const response = data.forEach((doc) => {
-                        temp.push(doc.data())
-                     })
-                     return temp;
-                });
+                let inf = await db.collection('guilds').doc(message.guild.id).collection('users').doc(toSearch.id).collection('infractions').get();
+                let inf_data = inf.docs.map(doc => doc.data());
 
-                for (let doc of inf) {
+                for (let doc of inf_data) {
                     console.log(doc)
                  }
                 
