@@ -1,7 +1,5 @@
 const { MessageEmbed } = require("discord.js");
 
-const { MessageEmbed} = require('discord.js')
-
 const answers = [
     'rock',
     'paper',

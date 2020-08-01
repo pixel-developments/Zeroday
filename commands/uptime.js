@@ -9,10 +9,10 @@ exports.run = async (client, message, args, db) => {
     let embed = new MessageEmbed()
         .setAuthor('Uptime', 'https://images.vexels.com/media/users/3/128840/isolated/preview/c091629800ce3d91d8527d32d60bc46f-stopwatch-timer-by-vexels.png')
         .setDescription(
-            `Days:` + days + '\n' +
-            `Hours:` + hours + '\n' +
-            `Minutes` +  minutes + '\n' +
-            `Seconds` + seconds)
+            `**Days:** ` + days + '\n' +
+            `**Hours:** ` + hours + '\n' +
+            `**Minutes:** ` +  minutes + '\n' +
+            `**Seconds:** ` + seconds)
         .setColor('#dec047');
     message.channel.send(embed);
 }
