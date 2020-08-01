@@ -11,7 +11,7 @@ module.exports = (client, member) => {
             logsEnabled = q.data().logs_enabled;
             joinleave = member.guild.channels.cache.find(channel => channel.name === q.data().join_leave_channel);
             let embed = new MessageEmbed()
-                .setDescription(`${message.member.user.tag} (${message.member}) has joined the server!`)
+                .setDescription(`${member.user.tag} (${message.member}) has joined the server!`)
                 .setColor('78f0ee')
                 .setFooter(`Member #${member.guild.memberCount}`)
             joinleave.send(embed);
