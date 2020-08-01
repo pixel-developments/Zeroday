@@ -6,7 +6,9 @@ exports.run = async (client, message, args, db) => {
         .setDescription('An error occured while preforming this command!')
         .addField(`Error`, 'Undefined')
         .addField('Description', 'The dipshit developer forgot something')
-        .setFooter('Please report this back to Zuke on the [ZeroDay Support Server](https://discord.gg/6pjvxpR)')
+        .setFooter('Please report this back to Zuke on the ZeroDay Support server (Click title)')
+        .setURL('https://discord.gg/6pjvxpR')
+        .setColor('a81d0d')
         message.channel.send(errEmbed);
 }
 
