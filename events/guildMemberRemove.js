@@ -8,7 +8,7 @@ module.exports = (client, member) => {
         if (q.exists) {
             joinleave = member.guild.channels.cache.find(channel => channel.name === q.data().join_leave_channel);
             let embed = new MessageEmbed()
-                .setDescription(`${member} has left the server!`)
+                .setDescription(`${message.member.user.tag} (${message.member}) has left the server!`)
                 .setColor('78f0ee')
             joinleave.send(embed);
         }

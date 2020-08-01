@@ -5,7 +5,6 @@ Moderation:
     - Lockdown Command
     - List bans
     - Server Info
-    - Tempban
     - ModMail
     - Notes
     - Infractions
@@ -23,13 +22,11 @@ Fun Commands:
         - Cat
         - Bird
     - Random Fact
-    - RPS
     - Fortune
     - Insult
 
 General Commands:
     - Poll
-    - Uptime
     - Translate
     - Music
         - Play

@@ -34,7 +34,6 @@ exports.run = async (client, message, args, db) => {
                     'punishments': punishment + 1
                 })
             }).catch(err => message.channel.send('There was an error preforming this command! Please try again in a second. (Timeout)'));
-            toBan.ban(reason);
 
             let embed = new MessageEmbed()
                 .setAuthor('Ban', client.user.displayAvatarURL())
@@ -58,6 +57,7 @@ exports.run = async (client, message, args, db) => {
             if(logsEnabled === true) {
                 logChannel.send(log);
             }
+            toBan.ban(reason);
         }
     }).catch(err => message.channel.send('There was an error preforming this command! Please try again in a second. (Timeout)'));
 }
