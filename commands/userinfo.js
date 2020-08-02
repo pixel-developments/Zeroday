@@ -31,7 +31,7 @@ exports.run = async (client, message, args, db) => {
             .addField('ID', message.member.user.id, true)
             .addField('Bot', message.member.user.bot, true)
             .addField('Created At', message.member.user.createdAt, true)
-            .addField('Joined At', message.member.user.joinedAt, true)
+            .addField('Joined At', message.member.joinedAt, true)
 
         message.channel.send(embed);
     }
@@ -45,7 +45,7 @@ exports.run = async (client, message, args, db) => {
             .addField('ID', tagged.user.id, true)
             .addField('Bot', tagged.user.bot, true)
             .addField('Created At', tagged.user.createdAt, true)
-            .addField('Joined At', tagged.user.joinedAt, true)
+            .addField('Joined At', tagged.joinedAt, true)
 
         message.channel.send(embed);
     }
