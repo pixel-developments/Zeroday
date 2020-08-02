@@ -45,7 +45,7 @@ exports.run = async (client, message, args, db) => {
             .addField('ID', tagged.user.id, true)
             .addField('Bot', tagged.user.bot, true)
             .addField('Created At', tagged.user.createdAt, true)
-            addField('Joined At', tagged.user.joinedAt, true)
+            .addField('Joined At', tagged.user.joinedAt, true)
 
         message.channel.send(embed);
     }
