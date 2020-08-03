@@ -82,5 +82,6 @@ exports.conf = {
     name: "warn",
     description: "Warns the specified user",
     usage: "warn [user] [reason]",
+    category: "moderation",
     aliases: []
 }

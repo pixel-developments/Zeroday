@@ -70,5 +70,6 @@ exports.conf = {
     name: "removemoderator",
     description: "Removes the specified role from the Moderator group",
     usage: "removemoderator [role id]",
+    category: "owner",
     aliases: ['moddelete', 'delmod', 'deletemod']
 }

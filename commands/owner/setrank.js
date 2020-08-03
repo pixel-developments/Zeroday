@@ -43,5 +43,6 @@ exports.conf = {
     name: "setranks",
     description: "Set where the ranks will go",
     usage: "setranks [channel name]",
+    category: "owner",
     aliases: []
 }

@@ -62,5 +62,6 @@ exports.conf = {
     name: "removerole",
     description: "Remove a role from the specified user",
     usage: "removerole [user] [role]",
+    category: "admin",
     aliases: ['roleremove']
 }

@@ -9,5 +9,6 @@ exports.conf = {
     name: "liedetector",
     description: "Are you lying about anything? Fess up now",
     usage: "liedetector",
+    category: "user",
     aliases: []
 }

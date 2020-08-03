@@ -23,5 +23,6 @@ exports.conf = {
     name: "setup",
     description: "How to setup the bot",
     usage: "setup",
+    category: "owner",
     aliases: []
 }

@@ -47,5 +47,6 @@ exports.conf = {
     name: "infractions",
     description: "Get the specified users infractions.",
     usage: "infractions [search|info|reason] [user|case]",
+    category: "moderation",
     aliases: ['inf']
 }

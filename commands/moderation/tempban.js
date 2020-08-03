@@ -86,5 +86,6 @@ exports.conf = {
     name: "tempban",
     description: "Tempoarily bans the user from the guild",
     usage: "tempban [user] [time] [reason]",
+    category: "moderation",
     aliases: []
 }

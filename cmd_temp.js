@@ -43,5 +43,9 @@ exports.run = async (client, message, args, db) => {
 }
 
 exports.conf = {
+    name: "",
+    description: "",
+    usage: "",
+    category: "",
     aliases: []
 }

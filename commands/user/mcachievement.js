@@ -15,5 +15,6 @@ exports.conf = {
     name: "mcachievement",
     description: "Achievement Get!",
     usage: "mcachievement [text]",
+    category: "user",
     aliases: ['mca']
 }

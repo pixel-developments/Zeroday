@@ -20,5 +20,6 @@ exports.conf = {
     name: "randomcolor",
     description: "Get all the colors!",
     usage: "randomcolor",
+    category: "user",
     aliases: []
 }

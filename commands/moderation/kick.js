@@ -82,5 +82,6 @@ exports.conf = {
     name: "kick",
     description: "Kicks the specified user from the guild",
     usage: "kick [user] [reason]",
+    category: "moderation",
     aliases: []
 }

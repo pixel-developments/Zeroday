@@ -44,5 +44,6 @@ exports.conf = {
     name: "setmemberlogs",
     description: "Set where the member logs will go",
     usage: "setmemberlogs [channel name]",
+    category: "owner",
     aliases: []
 }

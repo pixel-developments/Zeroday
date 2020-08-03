@@ -40,5 +40,6 @@ exports.conf = {
     name: "welcome",
     description: "Welcome message for the ZeroDay support server.",
     usage: "welcome",
+    category: "bot_owner",
     aliases: []
 }

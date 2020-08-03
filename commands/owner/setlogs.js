@@ -43,5 +43,6 @@ exports.conf = {
     name: "setlogs",
     description: "Set where the moderation logs will go",
     usage: "setlogs [channel name]",
+    category: "owner",
     aliases: []
 }

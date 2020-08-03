@@ -21,5 +21,6 @@ exports.conf = {
     name: "uptime",
     description: "*yawn* How long have I been awake?",
     usage: "uptime",
+    category: "user",
     aliases: []
 }

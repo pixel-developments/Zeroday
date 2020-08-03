@@ -85,5 +85,6 @@ exports.conf = {
     name: "premium",
     description: "Check if the guild is premium or activate key",
     usage: "premium [key]",
+    category: "owner",
     aliases: ['validate', 'key']
 }

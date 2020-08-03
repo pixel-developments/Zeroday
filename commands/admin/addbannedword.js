@@ -63,5 +63,6 @@ exports.conf = {
     name: "addbannedwords",
     description: "Add words to the ban list",
     usage: "addbannedwords [word]",
+    category: "admin",
     aliases: ['banwordadd', 'wordadd', 'addword']
 }

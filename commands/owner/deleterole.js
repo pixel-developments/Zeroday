@@ -58,5 +58,6 @@ exports.conf = {
     name: "deleterole",
     description: "Deletes the specified role from the guild",
     usage: "deleterole [role]",
+    category: "owner",
     aliases: ['roledelete']
 }

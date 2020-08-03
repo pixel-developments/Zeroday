@@ -21,6 +21,7 @@ exports.conf = {
     name: "keyadd",
     description: "Add a premium key",
     usage: "keyadd",
+    category: "bot_owner",
     aliases: ['addkey']
 }
 

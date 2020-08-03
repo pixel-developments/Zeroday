@@ -82,5 +82,6 @@ exports.conf = {
     name: "ban",
     description: "Ban the specified user from the guild",
     usage: "ban [user] [reason]",
+    category: "moderation",
     aliases: []
 }

@@ -66,5 +66,6 @@ exports.conf = {
     name: "addmoderator",
     description: "Adds the specified role to the Moderator group",
     usage: "addmoderator [role id]",
+    category: "owner",
     aliases: ['addmod', 'modadd']
 }

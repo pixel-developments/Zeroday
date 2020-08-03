@@ -109,5 +109,6 @@ exports.conf = {
     name: "minesweeper",
     description: "The classic minesweeper game",
     usage: "minesweeper [difficulty 1-10]",
+    category: "premium",
     aliases: []
 }

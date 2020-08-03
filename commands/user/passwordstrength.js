@@ -64,5 +64,6 @@ exports.conf = {
     name: "passwordstrength",
     description: "Think you have a good password? Well you might want to think again",
     usage: "passwordstrength [password]",
+    category: "user",
     aliases: ['pswdstrength', 'pswdstr']
 }

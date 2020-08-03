@@ -66,5 +66,6 @@ exports.conf = {
     name: "addadmin",
     description: "Adds the specified role to the Admin group",
     usage: "addadmin [role id]",
+    category: "owner",
     aliases: ['adminadd']
 }

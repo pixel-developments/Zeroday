@@ -62,5 +62,6 @@ exports.conf = {
     name: "addrole",
     description: "Add a role to the specified user",
     usage: "addrole [user] [role]",
+    category: "admin",
     aliases: ['roleadd']
 }

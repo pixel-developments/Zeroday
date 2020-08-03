@@ -43,5 +43,6 @@ exports.conf = {
     name: "setmute",
     description: "Set the muted role",
     usage: "setmute [role id]",
+    category: "owner",
     aliases: []
 }

@@ -94,5 +94,6 @@ exports.conf = {
     name: "mute",
     description: "Mutes the specified user for the specified time",
     usage: "mute [user] [time] [reason]",
+    category: "moderation",
     aliases: []
 }

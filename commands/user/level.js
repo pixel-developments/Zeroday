@@ -55,5 +55,6 @@ exports.conf = {
     name: "level",
     description: "Check out what level you are on the server",
     usage: "level",
+    category: "user",
     aliases: ['lvl', 'rank', 'rnk']
 }

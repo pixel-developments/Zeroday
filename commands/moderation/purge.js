@@ -45,5 +45,6 @@ exports.conf = {
     name: "purge",
     description: "Purges the chat",
     usage: "purge [amount]",
+    category: "moderation",
     aliases: ['delete', 'clear']
 }

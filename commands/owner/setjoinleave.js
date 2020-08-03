@@ -43,5 +43,6 @@ exports.conf = {
     name: "setjoinleave",
     description: "Set where the join/leave messages will ogo",
     usage: "setjoinleave [channel name]",
+    category: "owner",
     aliases: []
 }

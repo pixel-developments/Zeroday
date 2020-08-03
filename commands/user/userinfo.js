@@ -55,5 +55,6 @@ exports.conf = {
     name: "userinfo",
     description: "Hmm... What are they doing over there?",
     usage: "userinfo [user]",
+    category: "user",
     aliases: ['user', 'uinfo', 'whois']
 }

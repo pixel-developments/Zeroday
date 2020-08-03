@@ -73,5 +73,6 @@ exports.conf = {
     name: "createrole",
     description: "Creates the specified role with the specified color",
     usage: "createrole [role] [color hex]",
+    category: "owner",
     aliases: ['rolecreate']
 }

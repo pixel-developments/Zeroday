@@ -58,5 +58,6 @@ exports.conf = {
     name: "prefix",
     description: "View or change the prefix",
     usage: "prefix [prefix]",
+    category: "owner",
     aliases: []
 }

@@ -70,5 +70,6 @@ exports.conf = {
     name: "removeadmin",
     description: "Removes the specified role from the Admin group",
     usage: "removeadmin [role id]",
+    category: "owner",
     aliases: ['admindelete', 'deladmin', 'deleteadmin']
 }
