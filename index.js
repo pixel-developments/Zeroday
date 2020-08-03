@@ -1,12 +1,9 @@
-const Discord = require('discord.js');
+const {Discord, Collection} = require('discord.js');
 const client = new Discord.Client();
 require('dotenv/config');
 
-client.commands = new Discord.Collection();
-client.aliases = new Discord.Collection();
-
-require('./handler/events')(client);
-require('./handler/command')(client);
+["commands", "aliases"].forEach(x => client[x] = new Collection());
+["command", "events"].forEach(x => require(`./handler/${x}`)(client));
 
 //Initialize Bot & Database
 const admin = require('firebase-admin');

@@ -1,29 +1,13 @@
-const fs = require('fs')
-const util = require('util');
-
-const promisify = util.promisify;
-const readdir = promisify(fs.readdir);
+const { readdirSync } = require('fs');
 
 module.exports = (client) => {
-    let i = 1;
-
-    readdir(__dirname + '/../commands/', (err, files) => {
-        if(err) return console.log(err);
-
-        files.forEach((file) => {
-            if(!file.endsWith('.js')) return;
-
-            let props = require(`../commands/${file}`);
-            let commandName = file.split('.')[0];
-
-            console.log(`Loading command: ${commandName}, Command ${i}`);
-
-            client.commands.set(commandName, props);
-            props.conf.aliases.forEach((al) => {
-                client.aliases.set(al, commandName)
-            });
-
-            i++;
-        })
-    })
-};
+    const load = dirs => {
+        const commands = readdirSync(`./commands/${dirs}/`).filter(d => d.endsWith('.js'));
+        for(let file of commands) {
+            const pull = require(`../commands/${dirs}/${file}`);
+            client.commands.set(pull.config.name, pull);
+            if(pull.config.aliases) pull.config.aliases.forEach(a => client.aliases.set(a, pull.config.name));
+        }
+    }
+    ["admin", "bot_owner", "moderation", "owner", "premium", "user"].forEach(x => load(x));
+}

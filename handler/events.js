@@ -1,22 +1,14 @@
-const fs = require('fs')
-const util = require('util');
-
-const promisify = util.promisify;
-const readdir = promisify(fs.readdir);
+const { readdirSync } = require('fs');
+const { equal } = require('assert');
 
 module.exports = (client) => {
-    readdir(__dirname + '/../events', (err, files) => {
-        if(err) return console.log(err);
-
-        files.forEach(file => {
-            if(!file.endsWith('js')) return;
-
-            const event = require(`../events/${file}`);
-            let eventName = file.split('.')[0];
-            client.on(eventName, event.bind(null, client));
-
-            delete require.cache[require.resolve(`../events/${file}`)];
-            console.log(`Loading event: ${eventName}`);
-        })
-    })
+    const load = dirs => {
+        const commands = readdirSync(`./events/${dirs}/`).filter(d => d.endsWith('.js'));
+        for(let file of events) {
+            const evt = require(`../events/${dir}/${file}`)
+            let eName = file.split('.')[0];
+            client.on(eName, evt.bind(null, client))
+        }
+    }
+    ["client", "guild"].forEach(x => load(x));
 }
