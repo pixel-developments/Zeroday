@@ -1,7 +1,7 @@
 const { MessageEmbed } = require('discord.js')
 const fs = require('fs');
 
-let keys = require('../keys.json');
+let keys = require('../../keys.json');
 
 exports.run = async (client, message, args, db) => {
     if(message.member.user.id !== '270304325870419978') return;
