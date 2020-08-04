@@ -9,5 +9,5 @@ module.exports = (client) => {
             if(pull.conf.aliases) pull.conf.aliases.forEach(a => client.aliases.set(a, pull.conf.name));
         }
     }
-    ["admin", "bot_owner", "moderation", "owner", "premium", "user"].forEach(x => load(x));
+    ["admin", "bot_owner", "moderation", "owner", "premium", "user", "music"].forEach(x => load(x));
 }

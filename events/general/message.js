@@ -3,6 +3,8 @@ const firebase = require('firebase-admin');
 let db = firebase.firestore();
 let prefix, auto_mod_enabled, banned_words, logChannel, logsEnabled;
 
+let XP_COOLDOWN = new Map();
+
 module.exports = async (client, message) => {
     if(message.author.bot) return;
     if (!message.guild) return message.member.user.send('You must send a message in the a guild.');
@@ -47,6 +49,9 @@ module.exports = async (client, message) => {
     // XP
     db.collection('guilds').doc(message.guild.id).collection('users').doc(message.member.user.id).get().then(async (q) => {
         if (message.member.user.bot) return;
+        if(XP_COOLDOWN.containsKey(message.member.user.id)) return;
+        XP_COOLDOWN.set(message.member.user.id, message.guild.id);
+        setTimeout(() => { XP_COOLDOWN.delete(message.member.user.id); }, 60000);
         if (!q.exists) {
             await db.collection('guilds').doc(message.guild.id).collection('users').doc(message.member.user.id).set({
                 'username': message.member.user.username,
