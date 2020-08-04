@@ -22,20 +22,19 @@ exports.run = async (client, message, args, db) => {
         message.channel.send(errEmbed);
     });
 
-    const { voiceChannel } = message.member.voice;
-    if(!voiceChannel) return message.reply('You need to be in a voice channel to play music!');
-    console.log(voiceChannel);
+    const { channel } = message.member.voice;
+    if (!channel) return message.reply('You need to be in a voice channel to play music!');
 
-    //const permissions = voiceChannel.permissionsFor(message.client.user);
-    //if(!permissions.has('CONNECT')) return message.reply('I cannot connect to your voice channel! Make sure I have permission to.');
-    //if(!permissions.has('SPEAK')) return message.reply('I cannot speak in your voice channel! Make sure I have permission to.');
+    const permissions = channel.permissionsFor(message.client.user);
+    if(!permissions.has('CONNECT')) return message.reply('I cannot connect to your voice channel! Make sure I have permission to.');
+    if(!permissions.has('SPEAK')) return message.reply('I cannot speak in your voice channel! Make sure I have permission to.');
 
     if(!args[0]) return message.reply(`Invalid Arguments! | ${prefix}play [song]`);
 
     const player = client.music.players.spawn({
         guild: message.guild,
         textChannel: message.channel,
-        voiceChannel: voiceChannel
+        voiceChannel: channel
     });
 
     client.music.search(args.join(" "), message.author).then(async res => {
@@ -61,7 +60,7 @@ exports.run = async (client, message, args, db) => {
                 collector.on("collect", m => {
                     if(/cancel/i.test(m.content)) return collector.stop("cancelled");
 
-                    const track = trakcs[Number(m.content) - 1];
+                    const track = tracks[Number(m.content) - 1];
                     player.queue.add(track);
                     message.channel.send(`Enqueueing \`${track.title}\`${Utils.formatTime(track.duration, true)}`);
                     if(!player) player.play();

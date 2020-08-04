@@ -41,7 +41,7 @@ exports.run = async (client, message, args, db) => {
                     .setAuthor('Error!', 'https://cdn0.iconfinder.com/data/icons/shift-free/32/Error-512.png')
                     .setDescription('An error occured while preforming this command!\nPlease visit the [Support server](https://discord.gg/6pjvxpR) to report this!')
                     .addField(`Error`, err.name)
-                    .addField('Description', err.description)
+                    .addField('Description', err.message)
                     .setColor('a81d0d')
                 message.channel.send(errEmbed);
             });;
