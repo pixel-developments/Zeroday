@@ -32,7 +32,7 @@ exports.run = async (client, message, args, db) => {
 }
 
 exports.conf = {
-    name: "skup",
+    name: "skip",
     description: "Skips the current song",
     usage: "",
     category: "music",

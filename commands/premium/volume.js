@@ -39,6 +39,6 @@ exports.conf = {
     name: "volume",
     description: "Set the volume of the music",
     usage: "",
-    category: "music",
+    category: "premium",
     aliases: ['vol']
 }
