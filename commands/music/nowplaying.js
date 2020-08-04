@@ -1,6 +1,5 @@
 const { MessageEmbed } = require('discord.js')
-const fs = require('fs');
-const { auth } = require('firebase-admin');
+const { Utils } = require('erela.js');
 
 exports.run = async (client, message, args, db) => {
     let prefix, logChannel, logsEnabled;
