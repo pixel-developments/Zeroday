@@ -49,9 +49,9 @@ module.exports = async (client, message) => {
     // XP
     db.collection('guilds').doc(message.guild.id).collection('users').doc(message.member.user.id).get().then(async (q) => {
         if (message.member.user.bot) return;
-        if(XP_COOLDOWN.containsKey(message.member.user.id)) return;
-        XP_COOLDOWN.set(message.member.user.id, message.guild.id);
-        setTimeout(() => { XP_COOLDOWN.delete(message.member.user.id); }, 60000);
+        //if(XP_COOLDOWN.containsKey(message.member.user.id)) return;
+        //XP_COOLDOWN.set(message.member.user.id, message.guild.id);
+        //setTimeout(() => { XP_COOLDOWN.delete(message.member.user.id); }, 60000);
         if (!q.exists) {
             await db.collection('guilds').doc(message.guild.id).collection('users').doc(message.member.user.id).set({
                 'username': message.member.user.username,

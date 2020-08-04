@@ -22,7 +22,7 @@ exports.run = async (client, message, args, db) => {
         message.channel.send(errEmbed);
     });
 
-    const { voiceChannel } = message.member;
+    const { voiceChannel } = message.member.voice.channel;
     const player = client.music.players.get(message.guild.id);
     if(voiceChannel && voiceChannel.id !== player.voiceChannel.id) return message.reply('You need to be in a voice channel to use this command!');
     if(!player) return message.reply("There are no songs playing");

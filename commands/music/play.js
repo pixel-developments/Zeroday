@@ -22,19 +22,20 @@ exports.run = async (client, message, args, db) => {
         message.channel.send(errEmbed);
     });
 
-    const { voiceChannel } = message.member;
+    const { voiceChannel } = message.member.voice;
     if(!voiceChannel) return message.reply('You need to be in a voice channel to play music!');
+    console.log(voiceChannel);
 
-    const permissions = voiceChannel.permissionsFor(client.user);
-    if(!permissions.has('CONNECT')) return message.reply('I cannot connect to your voice channel! Make sure I have permission to.');
-    if(!permissions.has('SPEAK')) return message.reply('I cannot speak in your voice channel! Make sure I have permission to.');
+    //const permissions = voiceChannel.permissionsFor(message.client.user);
+    //if(!permissions.has('CONNECT')) return message.reply('I cannot connect to your voice channel! Make sure I have permission to.');
+    //if(!permissions.has('SPEAK')) return message.reply('I cannot speak in your voice channel! Make sure I have permission to.');
 
     if(!args[0]) return message.reply(`Invalid Arguments! | ${prefix}play [song]`);
 
     const player = client.music.players.spawn({
         guild: message.guild,
         textChannel: message.channel,
-        voiceChannel
+        voiceChannel: voiceChannel
     });
 
     client.music.search(args.join(" "), message.author).then(async res => {

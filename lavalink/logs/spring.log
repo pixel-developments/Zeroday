@@ -1,0 +1,201 @@
+2020-08-04 00:12:59.351  WARN 2380 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2020-08-04 00:12:59.384 ERROR 2380 --- [main] lavalink.server.Launcher                 : Application failed
+
+java.lang.UnsupportedClassVersionError: lavalink/server/info/AppInfo has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_251]
+	at java.lang.ClassLoader.defineClass(Unknown Source) ~[na:1.8.0_251]
+	at java.security.SecureClassLoader.defineClass(Unknown Source) ~[na:1.8.0_251]
+	at java.net.URLClassLoader.defineClass(Unknown Source) ~[na:1.8.0_251]
+	at java.net.URLClassLoader.access$100(Unknown Source) ~[na:1.8.0_251]
+	at java.net.URLClassLoader$1.run(Unknown Source) ~[na:1.8.0_251]
+	at java.net.URLClassLoader$1.run(Unknown Source) ~[na:1.8.0_251]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_251]
+	at java.net.URLClassLoader.findClass(Unknown Source) ~[na:1.8.0_251]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[na:1.8.0_251]
+	at org.springframework.boot.loader.LaunchedURLClassLoader.loadClass(LaunchedURLClassLoader.java:93) ~[Lavalink.jar:na]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[na:1.8.0_251]
+	at lavalink.server.Launcher.getVersionInfo(Launcher.kt:50) [classes!/:na]
+	at lavalink.server.Launcher.getVersionInfo$default(Launcher.kt:49) [classes!/:na]
+	at lavalink.server.Launcher$main$1.onApplicationEvent(Launcher.kt:118) ~[classes!/:na]
+	at lavalink.server.Launcher$main$1.onApplicationEvent(Launcher.kt:43) ~[classes!/:na]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:172) ~[spring-context-5.1.9.RELEASE.jar!/:5.1.9.RELEASE]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:165) ~[spring-context-5.1.9.RELEASE.jar!/:5.1.9.RELEASE]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:139) ~[spring-context-5.1.9.RELEASE.jar!/:5.1.9.RELEASE]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:127) ~[spring-context-5.1.9.RELEASE.jar!/:5.1.9.RELEASE]
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:76) ~[spring-boot-2.1.8.RELEASE.jar!/:2.1.8.RELEASE]
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:53) ~[spring-boot-2.1.8.RELEASE.jar!/:2.1.8.RELEASE]
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:342) ~[spring-boot-2.1.8.RELEASE.jar!/:2.1.8.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:305) ~[spring-boot-2.1.8.RELEASE.jar!/:2.1.8.RELEASE]
+	at lavalink.server.Launcher.main(Launcher.kt:127) [classes!/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_251]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[na:1.8.0_251]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[na:1.8.0_251]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[na:1.8.0_251]
+	at org.springframework.boot.loader.MainMethodRunner.run(MainMethodRunner.java:48) [Lavalink.jar:na]
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:87) [Lavalink.jar:na]
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:51) [Lavalink.jar:na]
+	at org.springframework.boot.loader.JarLauncher.main(JarLauncher.java:52) [Lavalink.jar:na]
+
+2020-08-04 00:12:59.386 ERROR 2380 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+java.lang.UnsupportedClassVersionError: lavalink/server/info/AppInfo has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_251]
+	at java.lang.ClassLoader.defineClass(Unknown Source) ~[na:1.8.0_251]
+	at java.security.SecureClassLoader.defineClass(Unknown Source) ~[na:1.8.0_251]
+	at java.net.URLClassLoader.defineClass(Unknown Source) ~[na:1.8.0_251]
+	at java.net.URLClassLoader.access$100(Unknown Source) ~[na:1.8.0_251]
+	at java.net.URLClassLoader$1.run(Unknown Source) ~[na:1.8.0_251]
+	at java.net.URLClassLoader$1.run(Unknown Source) ~[na:1.8.0_251]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_251]
+	at java.net.URLClassLoader.findClass(Unknown Source) ~[na:1.8.0_251]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[na:1.8.0_251]
+	at org.springframework.boot.loader.LaunchedURLClassLoader.loadClass(LaunchedURLClassLoader.java:93) ~[Lavalink.jar:na]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[na:1.8.0_251]
+	at lavalink.server.Launcher.getVersionInfo(Launcher.kt:50) [classes!/:na]
+	at lavalink.server.Launcher.getVersionInfo$default(Launcher.kt:49) [classes!/:na]
+	at lavalink.server.Launcher$main$1.onApplicationEvent(Launcher.kt:118) ~[classes!/:na]
+	at lavalink.server.Launcher$main$1.onApplicationEvent(Launcher.kt:43) ~[classes!/:na]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:172) ~[spring-context-5.1.9.RELEASE.jar!/:5.1.9.RELEASE]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:165) ~[spring-context-5.1.9.RELEASE.jar!/:5.1.9.RELEASE]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:139) ~[spring-context-5.1.9.RELEASE.jar!/:5.1.9.RELEASE]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:127) ~[spring-context-5.1.9.RELEASE.jar!/:5.1.9.RELEASE]
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:76) ~[spring-boot-2.1.8.RELEASE.jar!/:2.1.8.RELEASE]
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:53) ~[spring-boot-2.1.8.RELEASE.jar!/:2.1.8.RELEASE]
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:342) ~[spring-boot-2.1.8.RELEASE.jar!/:2.1.8.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:305) ~[spring-boot-2.1.8.RELEASE.jar!/:2.1.8.RELEASE]
+	at lavalink.server.Launcher.main(Launcher.kt:127) [classes!/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_251]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[na:1.8.0_251]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[na:1.8.0_251]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[na:1.8.0_251]
+	at org.springframework.boot.loader.MainMethodRunner.run(MainMethodRunner.java:48) [Lavalink.jar:na]
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:87) [Lavalink.jar:na]
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:51) [Lavalink.jar:na]
+	at org.springframework.boot.loader.JarLauncher.main(JarLauncher.java:52) [Lavalink.jar:na]
+
+2020-08-04 00:18:27.816  INFO 43852 --- [main] lavalink.server.Launcher                 : 
+
+[32m       .  [31m _                  _ _       _    [32m__ _ _
+[32m      /\\ [31m| | __ ___   ____ _| (_)_ __ | | __[32m\ \ \ \
+[32m     ( ( )[31m| |/ _` \ \ / / _` | | | '_ \| |/ /[32m \ \ \ \
+[32m      \\/ [31m| | (_| |\ V / (_| | | | | | |   < [32m  ) ) ) )
+[32m       '  [31m|_|\__,_| \_/ \__,_|_|_|_| |_|_|\_\[32m / / / /
+[0m    =========================================[32m/_/_/_/[0m
+
+	Version:        c53259e604ead573df143ae27722c5dd3054ab2c-SNAPSHOT
+	Build:          1079
+	Build time:     17.07.2020 19:19:35 UTC
+	Branch          master
+	Commit:         c53259e
+	Commit time:    17.07.2020 19:14:44 UTC
+	JVM:            13
+	Lavaplayer      1.3.50
+
+2020-08-04 00:18:28.076  INFO 43852 --- [main] lavalink.server.Launcher                 : Starting Launcher on ZJR-PC with PID 43852 (C:\Users\kylez\Documents\Discord Bots\ZeroDay-1\lavalink\Lavalink.jar started by kylez in C:\Users\kylez\Documents\Discord Bots\ZeroDay-1\lavalink)
+2020-08-04 00:18:28.077  INFO 43852 --- [main] lavalink.server.Launcher                 : No active profile set, falling back to default profiles: default
+2020-08-04 00:18:28.153  WARN 43852 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2020-08-04 00:18:31.093  WARN 43852 --- [main] io.undertow.websockets.jsr               : UT026010: Buffer pool was not set on WebSocketDeploymentInfo, the default pool will be used
+2020-08-04 00:18:31.126  INFO 43852 --- [main] io.undertow.servlet                      : Initializing Spring embedded WebApplicationContext
+2020-08-04 00:18:31.127  INFO 43852 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2944 ms
+2020-08-04 00:18:31.862  WARN 43852 --- [main] l.server.config.SentryConfiguration      : Turning off sentry
+2020-08-04 00:18:31.888  INFO 43852 --- [main] l.s.c.AudioSendFactoryConfiguration      : OS: Windows 10, Arch: amd64
+2020-08-04 00:18:31.889  INFO 43852 --- [main] l.s.c.AudioSendFactoryConfiguration      : JDA-NAS supported system detected. Enabled native audio sending.
+2020-08-04 00:18:31.890  INFO 43852 --- [main] l.s.c.AudioSendFactoryConfiguration      : Setting buffer to 400ms
+2020-08-04 00:18:31.892  INFO 43852 --- [main] l.s.c.AudioSendFactoryConfiguration      : Setting playlist load limit to 6
+2020-08-04 00:18:32.922  INFO 43852 --- [main] c.s.d.l.tools.GarbageCollectionMonitor   : GC monitoring enabled, reporting results every 2 minutes.
+2020-08-04 00:18:33.636  INFO 43852 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-08-04 00:18:34.169  INFO 43852 --- [main] org.xnio                                 : XNIO version 3.3.8.Final
+2020-08-04 00:18:34.203  INFO 43852 --- [main] org.xnio.nio                             : XNIO NIO Implementation Version 3.3.8.Final
+2020-08-04 00:18:34.770  INFO 43852 --- [main] o.s.b.w.e.u.UndertowServletWebServer     : Undertow started on port(s) 2333 (http) with context path ''
+2020-08-04 00:18:34.809  INFO 43852 --- [main] lavalink.server.Launcher                 : Started Launcher in 8.113 seconds (JVM running for 11.042)
+2020-08-04 00:19:48.670  INFO 43852 --- [XNIO-1 task-1] io.undertow.servlet                      : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-08-04 00:19:48.671  INFO 43852 --- [XNIO-1 task-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-08-04 00:19:48.680  INFO 43852 --- [XNIO-1 task-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2020-08-04 00:19:48.787  INFO 43852 --- [XNIO-1 task-1] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:49733
+2020-08-04 00:19:49.247  INFO 43852 --- [XNIO-1 task-1] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:49733
+2020-08-04 00:21:37.975  INFO 43852 --- [XNIO-1 I/O-1] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:49733 -- CloseStatus[code=1006, reason=]
+2020-08-04 00:21:37.976  INFO 43852 --- [XNIO-1 I/O-1] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-08-04 00:21:42.489  INFO 43852 --- [XNIO-1 task-2] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:49749
+2020-08-04 00:21:42.497  INFO 43852 --- [XNIO-1 task-2] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:49749
+2020-08-04 00:23:11.099  INFO 43852 --- [XNIO-1 I/O-1] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:49749 -- CloseStatus[code=1006, reason=]
+2020-08-04 00:23:11.099  INFO 43852 --- [XNIO-1 I/O-1] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-08-04 00:23:20.485  INFO 43852 --- [XNIO-1 task-3] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:49782
+2020-08-04 00:23:20.493  INFO 43852 --- [XNIO-1 task-3] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:49782
+2020-08-04 00:23:41.977  INFO 43852 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:49782 -- CloseStatus[code=1006, reason=]
+2020-08-04 00:23:41.979  INFO 43852 --- [XNIO-1 I/O-2] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-08-04 00:23:54.390  INFO 43852 --- [XNIO-1 task-4] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:49797
+2020-08-04 00:23:54.397  INFO 43852 --- [XNIO-1 task-4] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:49797
+2020-08-04 00:27:33.788  INFO 43852 --- [XNIO-1 I/O-1] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:49797 -- CloseStatus[code=1006, reason=]
+2020-08-04 00:27:33.790  INFO 43852 --- [XNIO-1 I/O-1] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-08-04 00:27:35.885  INFO 43852 --- [XNIO-1 task-5] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:49815
+2020-08-04 00:27:35.894  INFO 43852 --- [XNIO-1 task-5] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:49815
+2020-08-04 00:28:45.830  INFO 43852 --- [XNIO-1 I/O-3] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:49815 -- CloseStatus[code=1006, reason=]
+2020-08-04 00:28:45.830  INFO 43852 --- [XNIO-1 I/O-3] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-08-04 00:28:49.424  INFO 43852 --- [XNIO-1 task-6] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:49834
+2020-08-04 00:28:49.433  INFO 43852 --- [XNIO-1 task-6] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:49834
+2020-08-04 00:30:10.964  INFO 43852 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:49834 -- CloseStatus[code=1006, reason=]
+2020-08-04 00:30:10.964  INFO 43852 --- [XNIO-1 I/O-2] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-08-04 00:30:12.947  INFO 43852 --- [XNIO-1 task-7] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:49847
+2020-08-04 00:30:12.956  INFO 43852 --- [XNIO-1 task-7] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:49847
+2020-08-04 00:32:40.695  INFO 43852 --- [XNIO-1 I/O-3] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:49847 -- CloseStatus[code=1006, reason=]
+2020-08-04 00:32:40.697  INFO 43852 --- [XNIO-1 I/O-3] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-08-04 00:32:43.302  INFO 43852 --- [XNIO-1 task-8] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:49867
+2020-08-04 00:32:43.310  INFO 43852 --- [XNIO-1 task-8] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:49867
+2020-08-04 00:32:47.050  INFO 43852 --- [XNIO-1 I/O-3] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:49867 -- CloseStatus[code=1006, reason=]
+2020-08-04 00:32:47.051  INFO 43852 --- [XNIO-1 I/O-3] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-08-04 00:32:49.097  INFO 43852 --- [XNIO-1 task-9] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:49878
+2020-08-04 00:32:49.106  INFO 43852 --- [XNIO-1 task-9] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:49878
+2020-08-04 00:34:24.018  INFO 43852 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:49878 -- CloseStatus[code=1006, reason=]
+2020-08-04 00:34:24.019  INFO 43852 --- [XNIO-1 I/O-2] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-08-04 00:34:33.038  INFO 43852 --- [XNIO-1 task-10] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:49893
+2020-08-04 00:34:33.052  INFO 43852 --- [XNIO-1 task-10] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:49893
+2020-08-04 09:50:42.580  INFO 43852 --- [XNIO-1 I/O-1] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:49893 -- CloseStatus[code=1006, reason=]
+2020-08-04 09:50:42.580  INFO 43852 --- [XNIO-1 I/O-1] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-08-04 09:50:45.969  INFO 43852 --- [XNIO-1 task-11] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:51504
+2020-08-04 09:50:45.977  INFO 43852 --- [XNIO-1 task-11] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:51504
+2020-08-04 09:52:06.380  INFO 43852 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:51504 -- CloseStatus[code=1006, reason=]
+2020-08-04 09:52:06.382  INFO 43852 --- [XNIO-1 I/O-4] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-08-04 09:52:10.962  INFO 43852 --- [XNIO-1 task-12] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:51517
+2020-08-04 09:52:10.970  INFO 43852 --- [XNIO-1 task-12] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:51517
+2020-08-04 09:52:51.736  INFO 43852 --- [XNIO-1 I/O-1] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:51517 -- CloseStatus[code=1006, reason=]
+2020-08-04 09:52:51.737  INFO 43852 --- [XNIO-1 I/O-1] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-08-04 09:52:53.737  INFO 43852 --- [XNIO-1 task-13] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:51529
+2020-08-04 09:52:53.745  INFO 43852 --- [XNIO-1 task-13] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:51529
+2020-08-04 09:59:29.522  INFO 43852 --- [XNIO-1 I/O-1] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:51529 -- CloseStatus[code=1006, reason=]
+2020-08-04 09:59:29.523  INFO 43852 --- [XNIO-1 I/O-1] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-08-04 09:59:43.770  INFO 43852 --- [XNIO-1 task-14] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:51565
+2020-08-04 09:59:43.778  INFO 43852 --- [XNIO-1 task-14] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:51565
+2020-08-04 09:59:44.966  INFO 43852 --- [XNIO-1 I/O-1] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:51565 -- CloseStatus[code=1006, reason=]
+2020-08-04 09:59:44.967  INFO 43852 --- [XNIO-1 I/O-1] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-08-04 09:59:53.887  INFO 43852 --- [XNIO-1 task-15] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:51574
+2020-08-04 09:59:53.893  INFO 43852 --- [XNIO-1 task-15] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:51574
+2020-08-04 10:01:02.795  INFO 43852 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:51574 -- CloseStatus[code=1006, reason=]
+2020-08-04 10:01:02.802  INFO 43852 --- [XNIO-1 I/O-2] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-08-04 10:01:05.558  INFO 43852 --- [XNIO-1 task-16] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:51594
+2020-08-04 10:01:05.566  INFO 43852 --- [XNIO-1 task-16] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:51594
+2020-08-04 10:01:50.303  INFO 43852 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:51594 -- CloseStatus[code=1006, reason=]
+2020-08-04 10:01:50.304  INFO 43852 --- [XNIO-1 I/O-2] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-08-04 10:01:52.387  INFO 43852 --- [XNIO-1 task-17] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:51605
+2020-08-04 10:01:52.396  INFO 43852 --- [XNIO-1 task-17] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:51605
+2020-08-04 10:01:54.926  INFO 43852 --- [XNIO-1 I/O-1] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:51605 -- CloseStatus[code=1006, reason=]
+2020-08-04 10:01:54.928  INFO 43852 --- [XNIO-1 I/O-1] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-08-04 10:02:12.766  INFO 43852 --- [XNIO-1 task-18] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:51616
+2020-08-04 10:02:12.774  INFO 43852 --- [XNIO-1 task-18] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:51616
+2020-08-04 10:02:42.555  INFO 43852 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:51616 -- CloseStatus[code=1006, reason=]
+2020-08-04 10:02:42.555  INFO 43852 --- [XNIO-1 I/O-4] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-08-04 10:02:44.580  INFO 43852 --- [XNIO-1 task-19] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:51632
+2020-08-04 10:02:44.588  INFO 43852 --- [XNIO-1 task-19] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:51632
+2020-08-04 10:06:42.262  INFO 43852 --- [XNIO-1 I/O-4] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:51632 -- CloseStatus[code=1006, reason=]
+2020-08-04 10:06:42.263  INFO 43852 --- [XNIO-1 I/O-4] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-08-04 10:06:44.415  INFO 43852 --- [XNIO-1 task-20] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:51655
+2020-08-04 10:06:44.424  INFO 43852 --- [XNIO-1 task-20] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:51655
+2020-08-04 10:07:35.933  INFO 43852 --- [XNIO-1 I/O-3] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:51655 -- CloseStatus[code=1006, reason=]
+2020-08-04 10:07:35.936  INFO 43852 --- [XNIO-1 I/O-3] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-08-04 10:07:37.999  INFO 43852 --- [XNIO-1 task-21] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:51671
+2020-08-04 10:07:38.009  INFO 43852 --- [XNIO-1 task-21] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:51671
+2020-08-04 10:07:57.195  INFO 43852 --- [XNIO-1 I/O-3] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:51671 -- CloseStatus[code=1006, reason=]
+2020-08-04 10:07:57.195  INFO 43852 --- [XNIO-1 I/O-3] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-08-04 10:07:59.627  INFO 43852 --- [XNIO-1 task-22] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:51679
+2020-08-04 10:07:59.634  INFO 43852 --- [XNIO-1 task-22] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:51679
+2020-08-04 10:07:59.966  INFO 43852 --- [XNIO-1 I/O-3] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:51679 -- CloseStatus[code=1006, reason=]
+2020-08-04 10:07:59.966  INFO 43852 --- [XNIO-1 I/O-3] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
