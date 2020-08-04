@@ -30,6 +30,7 @@ exports.run = async (client, message, args, db) => {
         .setAuthor(`Currently Playing: `, message.author.displayAvatarURL)
         .setThumbnail(thumbnail)
         .setDescription(`${player.playing ? "▶️" : "⏸️"} **[${title}](${url})** \`${Utils.formatTime(duration, true)}\` by ${author}`)
+        .setColor('#589bc4');
 
     return message.channel.send(embed);
 }

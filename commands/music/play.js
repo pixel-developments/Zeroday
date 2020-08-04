@@ -50,11 +50,12 @@ exports.run = async (client, message, args, db) => {
                 const embed = new MessageEmbed()
                     .setAuthor('Song Selection', message.author.displayAvatarURL())
                     .setDescription(tracks.map(video => `**${index++} -** ${video.title} `))
-                    .setFooter("Your response time closes within the next 30 seconds. Type  'cancel' to cancel the selection");
+                    .setFooter("Your response time closes within the next 30 seconds. Type  'cancel' to cancel the selection")
+                    .setColor('#589bc4');
                 await message.channel.send(embed);
 
                 const collector = message.channel.createMessageCollector(m => {
-                    return m.author.id === message.author.id && new RegExp(`^([1-5|cancel])$`, "i").test(m.content)
+                    return m.author.id === message.author.id && new RegExp(`^([1-5]|cancel)$`, "i").test(m.content)
                 }, {time: 30000, max: 1});
 
                 collector.on("collect", m => {
@@ -91,7 +92,7 @@ exports.run = async (client, message, args, db) => {
 exports.conf = {
     name: "play",
     description: "Play those tunes",
-    usage: "",
+    usage: "[song]",
     category: "music",
     aliases: []
 }

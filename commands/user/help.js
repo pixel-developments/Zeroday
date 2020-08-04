@@ -23,7 +23,7 @@ exports.run = async (client, message, args, db) => {
     });
 
     const embed = new MessageEmbed()
-        .setColor('')
+        .setColor('#c72835')
         .setAuthor(`${message.guild.me.displayName} Help`, message.guild.iconURL)
         .setThumbnail(client.user.displayAvatarURL)
 

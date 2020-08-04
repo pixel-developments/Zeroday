@@ -20,20 +20,25 @@ exports.run = async (client, message, args, db) => {
             .setColor('a81d0d')
         message.channel.send(errEmbed);
     });
+    db.collection('guilds').doc(message.guild.id).get().then(async (q) => {
+        if(q.exists && q.data().premium === false) return message.reply('You need the premium version of ZeroDay to use this command!')
+    });
 
-    const { channel } = message.member.voice.channel;
     const player = client.music.players.get(message.guild.id);
-    if(!channel || channel.id !== player.voiceChannel.id) return message.reply('You need to be in a voice channel to use this command!');
-    if(!player) return message.reply("There are no songs playing");
+    if(!player) return message.reply('There are no songs in the queue.');
+    if(args[0]) return message.reply(`Current Volume: **${player.volume}**`);
+    if(isNaN(args[0])) return message.reply('You must input a number!');
+    if(Number(args[0]) <= 0 || Number(args[0]) > 100) return message.reply('You may only set the volume to 1 - 100');
 
-    client.music.players.destroy(message.guild.id);
-    return message.channel.send("Successfully stopped the music and left the voice channel")
+    player.setVolume(Number(args[0]));
+    return message.reply(`Successfully set the volume to **${args[0]}**`);
+
 }
 
 exports.conf = {
-    name: "leave",
-    description: "Make the bot leave the voice channel",
+    name: "volume",
+    description: "Set the volume of the music",
     usage: "",
     category: "music",
-    aliases: []
+    aliases: ['vol']
 }

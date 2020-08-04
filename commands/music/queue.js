@@ -21,18 +21,30 @@ exports.run = async (client, message, args, db) => {
         message.channel.send(errEmbed);
     });
 
-    const { channel } = message.member.voice.channel;
+    const { channel } = message.member.voice;
     const player = client.music.players.get(message.guild.id);
+    
     if(!channel || channel.id !== player.voiceChannel.id) return message.reply('You need to be in a voice channel to use this command!');
-    if(!player) return message.reply("There are no songs playing");
+    if(!player || !player.queue[0]) return message.reply('There are no songs in the queue.');
 
-    client.music.players.destroy(message.guild.id);
-    return message.channel.send("Successfully stopped the music and left the voice channel")
+    let index = 1;
+    let string = "";
+
+    if(player.queue[0]) string += `__**Currently Playing:**__\n${player.queue[0].title} - **Requested by: **${player.queue[0].requester}**\n`;
+    if(player.queue[1]) string += `__**Queue:**__\n${player.queue.slice(1, 10).map(x => `**${index++}.** ${x.title} - **Requested by: **${x.requester}**`).join("\n")}`;
+
+    const embed = new MessageEmbed()
+        .setAuthor(`Current Queue for ${message.guild.name}`, message.guild.iconURL)
+        .setThumbnail(player.queue[0].thumbnail)
+        .setDescription(string)
+        .setColor('a81d0d');
+
+    return message.channel.send(embed);
 }
 
 exports.conf = {
-    name: "leave",
-    description: "Make the bot leave the voice channel",
+    name: "queue",
+    description: "Lists the music queue",
     usage: "",
     category: "music",
     aliases: []

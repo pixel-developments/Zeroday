@@ -17,23 +17,24 @@ exports.run = async (client, message, args, db) => {
             .setDescription('An error occured while preforming this command!\nPlease visit the [Support server](https://discord.gg/6pjvxpR) to report this!')
             .addField(`Error`, err.name)
             .addField('Description', err.description)
-            .setColor('a81d0d')
+            .setColor('a81d0d');
         message.channel.send(errEmbed);
     });
 
-    const { channel } = message.member.voice.channel;
+    const { channel } = message.member.voice;
     const player = client.music.players.get(message.guild.id);
+    
     if(!channel || channel.id !== player.voiceChannel.id) return message.reply('You need to be in a voice channel to use this command!');
-    if(!player) return message.reply("There are no songs playing");
+    if(!player) return message.reply('There are no songs in the queue.');
 
-    client.music.players.destroy(message.guild.id);
-    return message.channel.send("Successfully stopped the music and left the voice channel")
+    player.pause(player.playing);
+    return message.channel.send(`Music is now **${player.playing ? "resumed" : "paused"}**.`)
 }
 
 exports.conf = {
-    name: "leave",
-    description: "Make the bot leave the voice channel",
+    name: "pause",
+    description: "Pause/Resume the music",
     usage: "",
     category: "music",
-    aliases: []
+    aliases: ['resume']
 }
