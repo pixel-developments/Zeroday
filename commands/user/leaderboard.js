@@ -35,7 +35,7 @@ exports.run = async (client, message, args, db) => {
         user = message.guild.members.cache.get(doc.id);
     }
     console.log(lvl);
-    let msg = lvl.splice(1, 10).map(x => `**${index++}.** ${user} - \`${lvl}\``).join("\n");
+    let msg = new Map([...lvl.entries()].splice(1, 10).map(x => `**${index++}.** ${user} - \`${lvl}\``).join("\n"));
     message.channel.send(msg);
 }
 
