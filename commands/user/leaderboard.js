@@ -31,10 +31,15 @@ exports.run = async (client, message, args, db) => {
     let index = 1;
     for (let doc of user_id) {
         lvl_map.set(doc.id, doc.level);
-        lvl = new Map([...lvl_map.entries()].sort((a, b) => b[1] - a[1]));
+        lvl = new Map([...lvl_map.entries()].sort((a, b) => b[1] - a[1]).slice(1, 10));
         user = message.guild.members.cache.get(doc.id);
 
-        message.channel.send(`**${index++}.** ${user} - \`${lvl.get(doc.id)}\`\n`)
+        let embed = new MessageEmbed()
+            .setAuthor(`${message.guild.name} Level Leaderboard`, message.guild.iconURL)
+            .setDescription(`**${index++}.** ${user} | ${lvl.get(doc.id)}\n`)
+            .setColor('#6acf42');
+
+        message.channel.send(embed);
     }
     console.log(lvl);
     //let msg = lvl.map(x => `**${index++}.** ${user} - \`${lvl}\``).join("\n");
