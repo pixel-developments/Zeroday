@@ -25,8 +25,8 @@ exports.run = async (client, message, args, db) => {
     let users = await db.collection('guilds').doc(message.guild.id).collection('users').get();
     let user_id = users.docs.map(doc => doc.data());
 
+    let xp_array = [];
     for (let doc of user_id) {
-        let xp_array = [];
         xp_array.push(doc.xp);
         let xp = xp_array.sort((a, b) => b - a);
         console.log(xp);

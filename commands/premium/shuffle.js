@@ -35,8 +35,8 @@ exports.run = async (client, message, args, db) => {
 }
 
 exports.conf = {
-    name: "volume",
-    description: "Set the volume of the music",
+    name: "shuffle",
+    description: "Shuffles the queue",
     usage: "",
     category: "premium",
     aliases: []
