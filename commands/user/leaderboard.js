@@ -26,11 +26,17 @@ exports.run = async (client, message, args, db) => {
     let user_id = users.docs.map(doc => doc.data());
 
     let xp_array = [];
+    let xp;
+    let user;
+    let index = 1;
     for (let doc of user_id) {
         xp_array.push(doc.xp);
-        let xp = xp_array.sort((a, b) => b - a);
-        console.log(xp);
+        xp = xp_array.sort((a, b) => b - a);
+        user = message.guild.members.cache.get(doc.id);
     }
+    console.log(xp);
+    let msg = xp.splice(1, 10).map(x => `**${index++}.** ${user} - \`${xp}\``).join("\n");
+    message.channel.send(msg);
 }
 
 exports.conf = {
