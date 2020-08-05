@@ -22,11 +22,14 @@ exports.run = async (client, message, args, db) => {
         message.channel.send(errEmbed);
     });
 
-    let users = await db.collection('guilds').doc(message.guild.id).get();
+    let users = await db.collection('guilds').doc(message.guild.id).collection('users').get();
     let user_id = users.docs.map(doc => doc.data());
 
     for (let doc of user_id) {
-        console.log(doc)
+        let xp_array = [];
+        xp_array.push(doc.xp);
+        let xp = xp_array.sort((a, b) => b - a);
+        console.log(xp);
     }
 }
 
