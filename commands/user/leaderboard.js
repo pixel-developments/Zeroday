@@ -41,9 +41,6 @@ exports.run = async (client, message, args, db) => {
 
         message.channel.send(embed);
     }
-    console.log(lvl);
-    //let msg = lvl.map(x => `**${index++}.** ${user} - \`${lvl}\``).join("\n");
-    //message.channel.send(msg);
 }
 
 exports.conf = {
