@@ -2,6 +2,14 @@ const { MessageEmbed } = require('discord.js')
 const fs = require('fs');
 
 exports.run = async (client, message, args, db) => {
+
+
+    let disabledEmbed = new MessageEmbed()
+        .setColor("#a81d0d")
+        .setAuthor('Command Disabled', message.guild.iconURL)
+        .setDescription('I am still working on this command. Please be patient until it is done.');
+    return message.channel.send(disabledEmbed);
+
     let prefix, logChannel, logsEnabled;
 
     db.collection('guild_settings').doc(message.guild.id).get().then(async (q) => {
@@ -31,13 +39,6 @@ exports.run = async (client, message, args, db) => {
                 for (let doc of inf_data) {
                     console.log(doc)
                  }
-                
-                
-                /*console.log(size);
-                if(size === 0) return message.reply(`The user ${toSearch} does not have an infraction history.`);
-                for(inf = 0; inf < size; inf++) {
-                    console.log(inf);
-                }*/
             }
         }
     });
