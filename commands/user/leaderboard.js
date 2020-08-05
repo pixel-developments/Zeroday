@@ -33,10 +33,12 @@ exports.run = async (client, message, args, db) => {
         lvl_map.set(doc.id, doc.level);
         lvl = new Map([...lvl_map.entries()].sort((a, b) => b[1] - a[1]));
         user = message.guild.members.cache.get(doc.id);
+
+        message.channel.send(`**${index++}.** ${user} - \`${lvl.get(doc.id)}\`\n`)
     }
     console.log(lvl);
-    let msg = new Map([...lvl.entries()].splice(1, 10).map(x => `**${index++}.** ${user} - \`${lvl}\``).join("\n"));
-    message.channel.send(msg);
+    //let msg = lvl.map(x => `**${index++}.** ${user} - \`${lvl}\``).join("\n");
+    //message.channel.send(msg);
 }
 
 exports.conf = {
