@@ -26,21 +26,25 @@ exports.run = async (client, message, args, db) => {
     let user_id = users.docs.map(doc => doc.data());
 
     let lvl_map = new Map();
-    let lvl;
-    let user;
+    let string = "";
     let index = 1;
+
     for (let doc of user_id) {
         lvl_map.set(doc.id, doc.level);
-        lvl = new Map([...lvl_map.entries()].sort((a, b) => b[1] - a[1]).slice(1, 10));
-        user = message.guild.members.cache.get(doc.id);
+        let lvl = new Map([...lvl_map.entries()].sort((a, b) => b[1] - a[1]));
+        console.log(lvl);
 
-        let embed = new MessageEmbed()
-            .setAuthor(`${message.guild.name} Level Leaderboard`, message.guild.iconURL)
-            .setDescription(`**${index++}.** ${user} | ${lvl.get(doc.id)}\n`)
-            .setColor('#6acf42');
-
-        message.channel.send(embed);
+        let user = message.guild.members.cache.get(doc.id);
+        
+        string += `**${index++}.** ${user} | ${lvl.get(doc.id)}\n`;
     }
+
+    let embed = new MessageEmbed()
+        .setAuthor(`${message.guild.name} Level Leaderboard`, message.guild.iconURL)
+        .setDescription(string)
+        .setColor('#6acf42');
+
+    await message.channel.send(embed);
 }
 
 exports.conf = {
