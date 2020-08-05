@@ -31,7 +31,7 @@ exports.run = async (client, message, args, db) => {
     let index = 1;
     for (let doc of user_id) {
         xp_map.set(doc.id, doc.xp);
-        xp = xp_map.sort((a, b) => b - a);
+        xp = new Map([...xp_map.entries()].sort((a, b) => b[1] - a[1]));
         user = message.guild.members.cache.get(doc.id);
     }
     console.log(xp);
