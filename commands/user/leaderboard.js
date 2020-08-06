@@ -30,7 +30,17 @@ exports.run = async (client, message, args, db) => {
     let string = "";
     let index = 1;
 
-    for (let doc of user_id) {
+    for(let doc of user_id) {
+        let id = doc.id;
+        let level = doc.level;
+        let xp = doc.xp;
+
+        lvl_map.set(id, level);
+
+        string += `**${index++}.** ${message.guild.members.cache.get(id)} (Level ${level} | XP ${xp})`
+    }
+
+    /*for (let doc of user_id) {
         lvl_map.set(doc.id, doc.level);
         //let lvl = new Map([...lvl_map.entries()].sort((a, b) => b[1] - a[1]));
         let lvl = lvl_map.get(doc.id);
@@ -42,12 +52,11 @@ exports.run = async (client, message, args, db) => {
         
         //string += `**${index++}.** ${user} | ${lvl.get(doc.id)}\n`;
         string += `**${index++}.** ${user} | ${lvl}\n`;
-    }
+    }*/
 
     let embed = new MessageEmbed()
         .setAuthor(`${message.guild.name} Level Leaderboard`, message.guild.iconURL)
-        //.setDescription(string)
-        .setDescription(lvl_array.map(m => m.level))
+        .setDescription(string)
         .setColor('#6acf42');
 
     await message.channel.send(embed);
