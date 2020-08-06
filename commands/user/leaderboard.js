@@ -36,8 +36,10 @@ exports.run = async (client, message, args, db) => {
         let xp = doc.xp;
 
         lvl_map.set(id, level);
+        let lvl_asc = new Map([lvl_map.entries()].sort((a, b) => b.level - a.level))
+        console.log(lvl_asc);
 
-        string += `**${index++}.** ${message.guild.members.cache.get(id)} (Level ${level} | XP ${xp})`
+        //string += `**${index++}.** ${message.guild.members.cache.get(id)} (Level ${level} | XP ${xp})`
     }
 
     /*for (let doc of user_id) {
@@ -54,12 +56,12 @@ exports.run = async (client, message, args, db) => {
         string += `**${index++}.** ${user} | ${lvl}\n`;
     }*/
 
-    let embed = new MessageEmbed()
+    /*let embed = new MessageEmbed()
         .setAuthor(`${message.guild.name} Level Leaderboard`, message.guild.iconURL)
         .setDescription(string)
         .setColor('#6acf42');
 
-    await message.channel.send(embed);
+    await message.channel.send(embed);*/
 }
 
 exports.conf = {
@@ -68,4 +70,10 @@ exports.conf = {
     usage: "",
     category: "user",
     aliases: []
+}
+
+function pages(arr, itemsPerPage, page = 1) {
+    const maxPages = Math.ceil(arr.length / itemsPerPage);
+    if(page < 1 || page > maxPages) return null;
+    return arr.slice((page - 1) * itemsPerPage, page * itemsPerPage);
 }
