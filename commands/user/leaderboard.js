@@ -27,41 +27,31 @@ exports.run = async (client, message, args, db) => {
 
     let lvl_map = new Map();
     let lvl_array = [];
-    let string = "";
+    let page;
     let index = 1;
+    let id;
+    let level;
 
     for(let doc of user_id) {
-        let id = doc.id;
-        let level = doc.level;
+        id = doc.id;
+        level = doc.level;
         let xp = doc.xp;
 
         lvl_map.set(id, level);
-        let lvl_asc = new Map([lvl_map.entries()].sort((a, b) => b.level - a.level))
-        console.log(lvl_asc);
+        lvl_array = [...lvl_map.entries()].sort((a, b) => b[1] - a[1]);
 
-        //string += `**${index++}.** ${message.guild.members.cache.get(id)} (Level ${level} | XP ${xp})`
+        page = pages(lvl_array, 10, args[0] || 1);
+        if(!page) return message.reply("This server does not have a leaderboard yet!");
+
     }
 
-    /*for (let doc of user_id) {
-        lvl_map.set(doc.id, doc.level);
-        //let lvl = new Map([...lvl_map.entries()].sort((a, b) => b[1] - a[1]));
-        let lvl = lvl_map.get(doc.id);
-        lvl_array.push(lvl);
-        lvl_array.sort(function(a, b) { return b-a });
-        console.log(lvl_array.map(m => m.level));
-
-        let user = message.guild.members.cache.get(doc.id);
-        
-        //string += `**${index++}.** ${user} | ${lvl.get(doc.id)}\n`;
-        string += `**${index++}.** ${user} | ${lvl}\n`;
-    }*/
-
-    /*let embed = new MessageEmbed()
+    let embed = new MessageEmbed()
         .setAuthor(`${message.guild.name} Level Leaderboard`, message.guild.iconURL)
-        .setDescription(string)
+        //.setDescription(page.map(e => `**${index++}.** ${message.guild.members.cache.get(e[0])} **||** Level: ${e[1]}`))
+        .setDescription(page.map(e => `\`#${index++}.\` **|** ${message.guild.members.cache.get(e[0])} \`Lvl ${e[1]}\``))
         .setColor('#6acf42');
 
-    await message.channel.send(embed);*/
+    await message.channel.send(embed);
 }
 
 exports.conf = {
