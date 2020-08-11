@@ -90,6 +90,7 @@ module.exports = async (client, message) => {
                     .setColor(message.member.displayHexColor)
                     .setDescription(`${message.member} has leveled up to lvl ${q.data().level}!`);
 
+                if(!ranks) return;
                 ranks.send(rankEmbed);
             }
         }

@@ -28,7 +28,7 @@ exports.run = async (client, message, args, db) => {
             let dbOwner = q.data().guildOwnerID;
 
             if (message.member.user.id !== dbOwner) return;
-            if(args.length == 0 || args.length > 1) return message.reply(`Invalid Arguments! | ${prefix}addbannedword [word]`)
+            if(!args[0] || args.length > 1) return message.reply(`Invalid Arguments! | ${prefix}addbannedword [word]`)
 
             let word = args[0];
 

@@ -4,7 +4,7 @@ const { MessageEmbed } = require('discord.js');
 exports.run = async (client, message, args, db) => {
     let prefix, logChannel, logsEnabled;
 
-    db.collection('guild_settings').doc(message.guild.id).get().then(async (q) => {
+    await db.collection('guild_settings').doc(message.guild.id).get().then(async (q) => {
         if(q.exists) {
             prefix = q.data().prefix;
             logChannel = message.guild.channels.cache.find(channel => channel.name === q.data().log_channel);

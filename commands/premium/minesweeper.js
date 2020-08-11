@@ -3,7 +3,7 @@ const Minesweeper = require('discord.js-minesweeper');
 const fs = require('fs');
 
 exports.run = async (client, message, args, db) => {
-    db.collection('guild_settings').doc(message.guild.id).get().then(async (q) => {
+    await db.collection('guild_settings').doc(message.guild.id).get().then(async (q) => {
         if(q.exists) {
             if (q.data().prune === true) message.delete();
         }
