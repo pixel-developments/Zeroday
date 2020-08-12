@@ -48,6 +48,14 @@ exports.run = async (client, message, args, db) => {
                 })
             });
 
+            let inf = await db.collection('guilds').doc(message.guild.id).collection('users').doc(toMute.id).collection('infractions').get();
+            await db.collection('guilds').doc(message.guild.id).collection('users').doc(toMute.id).collection('infractions').doc(`${inf.size + 1}`).set({
+                'moderator': message.author.id,
+                'reason': reason,
+                'type': 'mute',
+                number: inf.size + 1
+            });
+
             await toMute.roles.add(mutedRole.id)
                 .catch(err => {
                     if (err) return message.channel.send("Something horrible has happened. Please contact the developers about it").then(console.log(err))

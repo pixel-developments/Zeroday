@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js')
-const fs = require('fs');
+const moment = require('moment');
 
 exports.run = async (client, message, args, db) => {
     let prefix, logChannel, logsEnabled;
@@ -22,33 +22,36 @@ exports.run = async (client, message, args, db) => {
         message.channel.send(errEmbed);
     });
 
-    if(args.length === 0) {
-        let embed = new MessageEmbed()
-            .setColor(message.member.displayHexColor)
-            .setAuthor(`${message.member.user.username}'s Information`, client.user.displayAvatarURL())
-            .setThumbnail(message.member.user.displayAvatarURL())
-            .addField('Username', message.member.user.username, true)
-            .addField('ID', message.member.user.id, true)
-            .addField('Bot', message.member.user.bot, true)
-            .addField('Created At', message.member.user.createdAt, true)
-            .addField('Joined At', message.member.joinedAt, true)
+    if (!args[0]) return message.reply(`Invalid Arguments! | ${prefix}passwordstrength [password]`);
 
-        message.channel.send(embed);
-    }
-    if(args.length === 1) {
-        let tagged = message.guild.member(message.mentions.users.first()) || message.guild.members.cache.get(args[0]);
-        let embed = new MessageEmbed()
-            .setColor(tagged.user.displayHexColor)
-            .setAuthor(`${tagged.user.username}'s Information`, client.user.displayAvatarURL())
-            .setThumbnail(tagged.user.displayAvatarURL())
-            .addField('Username', tagged.user.username, true)
-            .addField('ID', tagged.user.id, true)
-            .addField('Bot', tagged.user.bot, true)
-            .addField('Created At', tagged.user.createdAt, true)
-            .addField('Joined At', tagged.joinedAt, true)
+    let tagged = message.guild.member(message.mentions.users.first()) || message.guild.members.cache.get(args[0] || message.guild.members.cache.find(x => x.user.username.toLowerCase()));
+    if(!tagged) return message.reply('That user is not in the Discord!');
 
-        message.channel.send(embed);
-    }
+    if (tagged.user.presence.status === 'dnd') tagged.user.presence.status = "🔴 Do Not Disturb";
+    if (tagged.user.presence.status === 'online') tagged.user.presence.status = "🟢 Online";
+    if (tagged.user.presence.status === 'idle') tagged.user.presence.status = "🟡 Idle";
+    if (tagged.user.presence.status === 'offline') tagged.user.presence.status = "⚪ Offline";
+
+    let x = Date.now() - tagged.user.createdAt;
+    let y = Date.now() - tagged.joinedAt;
+    const created = Math.floor(x / 8600000)
+    const joined = Math.floor(y / 8600000)
+
+    const joinedDate = moment.utc(tagged.joinedAt).format("dddd, MMMM Do YYYY, HH:mm")
+    const createdDate = moment.utc(tagged.user.createdAt).format("dddd, MMMM Do YYYY, HH:mm")
+    let status = tagged.user.presence.status;
+
+    let embed = new MessageEmbed()
+        .setColor(tagged.displayColor)
+        .setAuthor(`${tagged.user.username}'s Information`, client.user.displayAvatarURL())
+        .setThumbnail(tagged.user.displayAvatarURL())
+        .addField('Username', tagged.user.username, true)
+        .addField('ID', tagged.user.id, true)
+        .addField('Status', status, true)
+        .addField('Created At', `${createdDate} \n> ${created} days ago.`, true)
+        .addField('Joined At', `${joinedDate} \n> ${joined} days ago.`, true)
+
+    message.channel.send(embed);
 }
 
 exports.conf = {

@@ -43,6 +43,14 @@ exports.run = async (client, message, args, db) => {
                 })
             }).catch(err => message.channel.send('There was an error preforming this command! Please try again in a second. (Timeout)'));
 
+            let inf = await db.collection('guilds').doc(message.guild.id).collection('users').doc(toBan.id).collection('infractions').get();
+            await db.collection('guilds').doc(message.guild.id).collection('users').doc(toBan.id).collection('infractions').doc(`${inf.size + 1}`).set({
+                'moderator': message.author.id,
+                'reason': reason,
+                'type': 'ban',
+                number: inf.size + 1
+            });
+
             let embed = new MessageEmbed()
                 .setAuthor('Ban', client.user.displayAvatarURL())
                 .setColor('#b50c00')

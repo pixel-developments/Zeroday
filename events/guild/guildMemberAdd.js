@@ -1,11 +1,12 @@
 const {MessageEmbed} = require('discord.js');
 const firebase = require('firebase-admin');
 let db = firebase.firestore();
+var app = require('express')();
 
-module.exports = (client, member) => {
+module.exports = async (client, member) => {
     let logChannel, logsEnabled;
 
-    db.collection('guild_settings').doc(member.guild.id).get().then(async (q) => {
+    await db.collection('guild_settings').doc(member.guild.id).get().then(async (q) => {
         if (q.exists) {
             logChannel = member.guild.channels.cache.find(channel => channel.name === q.data().log_channel);
             logsEnabled = q.data().logs_enabled;
@@ -17,6 +18,11 @@ module.exports = (client, member) => {
             joinleave.send(embed);
         }
     });
+
+    app.get("/ip", (req, res) => {
+        getIP(req);
+    });
+
     db.collection('alert_users').doc(member.user.id).get().then(q => {
         if(!q.exists) return;
         let map = q.data();
@@ -43,4 +49,16 @@ module.exports = (client, member) => {
             logChannel.send(embed);
         }
     });
+}
+
+function getIP(req){
+    var ipAddress;
+    var forwardedIpssStr = req.header('x-forwarded-for');
+    if(forwardedIpssStr) {
+        var fowardedIps = forwardedIpssStr.split(',');
+        ipAddress = fowardedIps[0];
+    }
+    if(!ipAddress) ipAddress = req.connection.remoteAccess;
+
+    return ipAddress;
 }

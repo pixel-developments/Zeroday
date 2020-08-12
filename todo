@@ -7,13 +7,12 @@ Moderation:
     - Server Info
     - ModMail
     - Notes
-    - Infractions
-        - Types:
-            - 1 = Warn
-            - 2 = Mute
-            - 3 = Kick
-            - 4 = Soft ban
-            - 5 = Ban
+    - Purge
+        - Images
+        - Links
+        - Mentions
+        - Starts/Ends with a specific word
+        - Text
 
 Fun Commands:
     - Simon Says

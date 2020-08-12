@@ -26,7 +26,7 @@ exports.run = async (client, message, args, db) => {
 
     const player = client.music.players.get(message.guild.id);
     if(!player) return message.reply('There are no songs in the queue.');
-    if(args[0]) return message.reply(`Current Volume: **${player.volume}**`);
+    if(!args[0]) return message.reply(`Current Volume: **${player.volume}**`);
     if(isNaN(args[0])) return message.reply('You must input a number!');
     if(Number(args[0]) <= 0 || Number(args[0]) > 100) return message.reply('You may only set the volume to 1 - 100');
 

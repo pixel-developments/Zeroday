@@ -42,7 +42,14 @@ exports.run = async (client, message, args, db) => {
                     'punishments': punishment + 1
                 })
             });
-            toKick.kick(reason);
+
+            let inf = await db.collection('guilds').doc(message.guild.id).collection('users').doc(toKick.id).collection('infractions').get();
+            await db.collection('guilds').doc(message.guild.id).collection('users').doc(toKick.id).collection('infractions').doc(`${inf.size + 1}`).set({
+                'moderator': message.author.id,
+                'reason': reason,
+                'type': 'kick',
+                number: inf.size + 1
+            });
 
             let embed = new MessageEmbed()
                 .setAuthor('Kick', client.user.displayAvatarURL())
@@ -63,6 +70,7 @@ exports.run = async (client, message, args, db) => {
 
             message.channel.send(embed);
             toKick.user.send(user);
+            toKick.kick(reason);
             if(logsEnabled === true) {
                 logChannel.send(log);
             }

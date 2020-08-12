@@ -64,7 +64,7 @@ exports.run = async (client, message, args, db) => {
                     const track = tracks[Number(m.content) - 1];
                     player.queue.add(track);
                     message.channel.send(`Enqueueing \`${track.title}\`${Utils.formatTime(track.duration, true)}`);
-                    if(!player) player.play();
+                    if(!player.playing) player.play();
                 });
 
                 collector.on("end", (_, reason) => {

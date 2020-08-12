@@ -25,7 +25,6 @@ exports.run = async (client, message, args, db) => {
     await db.collection('guilds').doc(message.guild.id).get().then(async (q) => {
         if (q.exists) {
             let mods = q.data().moderators;
-            let admins = q.data().admins;
 
             if(!mods.includes(message.member.roles.highest.id)) {
                 message.reply("You don't have permission to use this command!");
@@ -43,6 +42,14 @@ exports.run = async (client, message, args, db) => {
                     'punishments': punishment + 1
                 })
             }).catch(err => message.channel.send('There was an error preforming this command! Please try again in a second. (Timeout)'));
+
+            let inf = await db.collection('guilds').doc(message.guild.id).collection('users').doc(toWarn.id).collection('infractions').get();
+            await db.collection('guilds').doc(message.guild.id).collection('users').doc(toWarn.id).collection('infractions').doc(`${inf.size + 1}`).set({
+                'moderator': message.author.id,
+                'reason': reason,
+                'type': 'warning',
+                number: inf.size + 1
+            });
 
             let embed = new MessageEmbed()
                 .setAuthor('Warning', client.user.displayAvatarURL())
@@ -75,6 +82,7 @@ exports.run = async (client, message, args, db) => {
             .addField('Description', err.description)
             .setColor('a81d0d')
         message.channel.send(errEmbed);
+        console.log(err);
     });
 }
 
