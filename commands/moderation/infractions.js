@@ -1,6 +1,5 @@
 const { MessageEmbed } = require('discord.js')
-const fs = require('fs');
-const { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } = require('constants');
+const functions = require('../../functions');
 
 exports.run = async (client, message, args, db) => {
 
@@ -14,14 +13,14 @@ exports.run = async (client, message, args, db) => {
 
             if (q.data().prune === true) message.delete();
         }
-    });
+    }).catch(err => functions.errorMessage(message.channel, err));
 
     db.collection('guilds').doc(message.guild.id).get().then(async (q) => {
         if (q.exists) {
             let mods = q.data().moderators;
 
             if (!mods.includes(message.member.roles.highest.id)) return message.reply("You don't have permission to use this command!");
-            if (!args[0] || !args[1]) return message.reply(`Invalid Arguments! | ${prefix}inf [search|info] [user] [case]`)
+            if (!args[0] || !args[1]) return message.reply(`Invalid Arguments! | ${prefix}inf <search|info> <user> <case>`)
 
             if (args[0] === "search") {
                 let toSearch = message.guild.member(message.mentions.users.first()) || message.guild.members.cache.get(args[1]);
@@ -76,13 +75,13 @@ exports.run = async (client, message, args, db) => {
                 });
             }
         }
-    });
+    }).catch(err => functions.errorMessage(message.channel, err));
 }
 
 exports.conf = {
     name: "infractions",
     description: "Get the specified users infractions.",
-    usage: "infractions [search|info|reason] [user|case]",
+    usage: "<search|info> <user|case>",
     category: "moderation",
     aliases: ['inf']
 }

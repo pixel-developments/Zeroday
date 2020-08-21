@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js')
-const fs = require('fs');
+const functions = require('../../functions');
 
 exports.run = async (client, message, args, db) => {
     let prefix, logChannel, logsEnabled;
@@ -56,13 +56,6 @@ exports.run = async (client, message, args, db) => {
                 .setColor('#ffae00')
                 .setDescription(`${toWarn} has been warned for ${reason}`);
 
-            let log = new MessageEmbed()
-                .setAuthor('Mod Log | Warning', client.user.displayAvatarURL())
-                .setColor('#ffae00')
-                .addField('Warn', toWarn)
-                .addField('Reason', reason)
-                .addField('Staff', message.member);
-
             let user = new MessageEmbed()
                 .setAuthor(`Warning | ${message.guild.name}`, client.user.displayAvatarURL())
                 .setColor('#ffae00')
@@ -70,20 +63,17 @@ exports.run = async (client, message, args, db) => {
 
             message.channel.send(embed);
             toWarn.user.send(user);
-            if(logsEnabled === true) {
+            if (logsEnabled && logChannel != undefined) {
+                let log = new MessageEmbed()
+                    .setAuthor('Mod Log | Ban', client.user.displayAvatarURL())
+                    .setColor('#b50c00')
+                    .addField('Banned', toBan)
+                    .addField('Reason', reason)
+                    .addField('Staff', message.member);
                 logChannel.send(log);
             }
         }
-    }).catch(err => {
-        const errEmbed = new MessageEmbed()
-            .setAuthor('Error!', 'https://cdn0.iconfinder.com/data/icons/shift-free/32/Error-512.png')
-            .setDescription('An error occured while preforming this command!\nPlease visit the [Support server](https://discord.gg/6pjvxpR) to report this!')
-            .addField(`Error`, err.name)
-            .addField('Description', err.description)
-            .setColor('a81d0d')
-        message.channel.send(errEmbed);
-        console.log(err);
-    });
+    }).catch(err => functions.errorMessage(message.channel, err));
 }
 
 exports.conf = {

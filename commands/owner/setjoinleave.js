@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js')
-const fs = require('fs');
+const functions = require('../../functions');
 
 exports.run = async (client, message, args, db) => {
     let prefix, logChannel, logsEnabled;
@@ -12,7 +12,7 @@ exports.run = async (client, message, args, db) => {
 
             if (q.data().prune === true) message.delete();
 
-            if(args.length === 0 || args.length > 1) return message.reply(`The join/leave channel is ${logChannelM}`);
+            if (args.length === 0 || args.length > 1) return message.reply(`The join/leave channel is ${logChannelM}`);
 
             await db.collection('guild_settings').doc(message.guild.id).update({
                 'join_leave_channel': args[0]
@@ -28,21 +28,13 @@ exports.run = async (client, message, args, db) => {
                 logChannel.send(logEmbed);
             }
         }
-    }).catch(err => {
-        const errEmbed = new MessageEmbed()
-            .setAuthor('Error!', 'https://cdn0.iconfinder.com/data/icons/shift-free/32/Error-512.png')
-            .setDescription('An error occured while preforming this command!\nPlease visit the [Support server](https://discord.gg/6pjvxpR) to report this!')
-            .addField(`Error`, err.name)
-            .addField('Description', err.description)
-            .setColor('a81d0d')
-        message.channel.send(errEmbed);
-    });
+    }).catch(err => functions.errorMessage(message.channel, err));
 }
 
 exports.conf = {
     name: "setjoinleave",
     description: "Set where the join/leave messages will ogo",
-    usage: "setjoinleave [channel name]",
+    usage: "<channel name>",
     category: "owner",
     aliases: []
 }

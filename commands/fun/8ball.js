@@ -29,6 +29,6 @@ exports.conf = {
     name: "8ball",
     description: "Will your wishes come true?",
     usage: "8ball [question]",
-    category: "user",
+    category: "fun",
     aliases: ['8b']
 }

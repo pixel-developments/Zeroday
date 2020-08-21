@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js')
-const fs = require('fs');
+const functions = require('../../functions');
 
 exports.run = async (client, message, args, db) => {
     let prefix, logChannel, logsEnabled;
@@ -12,15 +12,7 @@ exports.run = async (client, message, args, db) => {
 
             if (q.data().prune === true) message.delete();
         }
-    }).catch(err => {
-        const errEmbed = new MessageEmbed()
-            .setAuthor('Error!', 'https://cdn0.iconfinder.com/data/icons/shift-free/32/Error-512.png')
-            .setDescription('An error occured while preforming this command!\nPlease visit the [Support server](https://discord.gg/6pjvxpR) to report this!')
-            .addField(`Error`, err.name)
-            .addField('Description', err.description)
-            .setColor('a81d0d')
-        message.channel.send(errEmbed);
-    });
+    }).catch(err => functions.errorMessage(message.channel, err));
 
     await db.collection('guilds').doc(message.guild.id).get().then(async (q) => {
         if (q.exists) {
@@ -56,13 +48,6 @@ exports.run = async (client, message, args, db) => {
                 .setColor('#d65522')
                 .setDescription(`${toKick} has been kicked for ${reason}`);
 
-            let log = new MessageEmbed()
-                .setAuthor('Mod Log | Kick', client.user.displayAvatarURL())
-                .setColor('#d65522')
-                .addField('Kicked', toKick)
-                .addField('Reason', reason)
-                .addField('Staff', message.member);
-
             let user = new MessageEmbed()
                 .setAuthor(`Kicked | ${message.guild.name}`, client.user.displayAvatarURL())
                 .setColor('#d65522')
@@ -71,19 +56,17 @@ exports.run = async (client, message, args, db) => {
             message.channel.send(embed);
             toKick.user.send(user);
             toKick.kick(reason);
-            if(logsEnabled === true) {
+            if (logsEnabled && logChannel != undefined) {
+                let log = new MessageEmbed()
+                    .setAuthor('Mod Log | Ban', client.user.displayAvatarURL())
+                    .setColor('#b50c00')
+                    .addField('Banned', toBan)
+                    .addField('Reason', reason)
+                    .addField('Staff', message.member);
                 logChannel.send(log);
             }
         }
-    }).catch(err => {
-        const errEmbed = new MessageEmbed()
-            .setAuthor('Error!', 'https://cdn0.iconfinder.com/data/icons/shift-free/32/Error-512.png')
-            .setDescription('An error occured while preforming this command!\nPlease visit the [Support server](https://discord.gg/6pjvxpR) to report this!')
-            .addField(`Error`, err.name)
-            .addField('Description', err.description)
-            .setColor('a81d0d')
-        message.channel.send(errEmbed);
-    });
+    }).catch(err => functions.errorMessage(message.channel, err));
 }
 
 exports.conf = {

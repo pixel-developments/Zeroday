@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js')
-const fs = require('fs');
+const functions = require('../../functions')
 
 exports.run = async (client, message, args, db) => {
     let prefix, logChannel, logsEnabled;
@@ -12,15 +12,7 @@ exports.run = async (client, message, args, db) => {
 
             if (q.data().prune === true) message.delete();
         }
-    }).catch(err => {
-        const errEmbed = new MessageEmbed()
-            .setAuthor('Error!', 'https://cdn0.iconfinder.com/data/icons/shift-free/32/Error-512.png')
-            .setDescription('An error occured while preforming this command!\nPlease visit the [Support server](https://discord.gg/6pjvxpR) to report this!')
-            .addField(`Error`, err.name)
-            .addField('Description', err.description)
-            .setColor('a81d0d')
-        message.channel.send(errEmbed);
-    });
+    }).catch(err => functions.errorMessage(message.channel, err));
 
     let users = await db.collection('guilds').doc(message.guild.id).collection('users').get();
     let user_id = users.docs.map(doc => doc.data());
@@ -47,7 +39,6 @@ exports.run = async (client, message, args, db) => {
 
     let embed = new MessageEmbed()
         .setAuthor(`${message.guild.name} Level Leaderboard`, message.guild.iconURL)
-        //.setDescription(page.map(e => `**${index++}.** ${message.guild.members.cache.get(e[0])} **||** Level: ${e[1]}`))
         .setDescription(page.map(e => `\`#${index++}.\` **|** ${message.guild.members.cache.get(e[0])} \`Lvl ${e[1]}\``))
         .setColor('#6acf42');
 

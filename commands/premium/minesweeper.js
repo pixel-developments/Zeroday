@@ -1,13 +1,13 @@
 const { MessageEmbed } = require('discord.js')
 const Minesweeper = require('discord.js-minesweeper');
-const fs = require('fs');
+const functions = require('../../functions');
 
 exports.run = async (client, message, args, db) => {
     await db.collection('guild_settings').doc(message.guild.id).get().then(async (q) => {
         if(q.exists) {
             if (q.data().prune === true) message.delete();
         }
-    });
+    }).catch(err => functions.errorMessage(message.channel, err));
 
     db.collection('guilds').doc(message.guild.id).get().then(async (q) => {
         if(q.exists) {
@@ -94,15 +94,7 @@ exports.run = async (client, message, args, db) => {
             }
             message.channel.send(minesweeper.start());
         }
-    }).catch(err => {
-        const errEmbed = new MessageEmbed()
-            .setAuthor('Error!', 'https://cdn0.iconfinder.com/data/icons/shift-free/32/Error-512.png')
-            .setDescription('An error occured while preforming this command!\nPlease visit the [Support server](https://discord.gg/6pjvxpR) to report this!')
-            .addField(`Error`, err.name)
-            .addField('Description', err.description)
-            .setColor('a81d0d')
-        message.channel.send(errEmbed);
-    });
+    }).catch(err => functions.errorMessage(message.channel, err));
 }
 
 exports.conf = {

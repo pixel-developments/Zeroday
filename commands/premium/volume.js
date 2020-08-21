@@ -1,4 +1,5 @@
 const { MessageEmbed } = require('discord.js')
+const functions = require('../../functions')
 
 exports.run = async (client, message, args, db) => {
     let prefix, logChannel, logsEnabled;
@@ -11,15 +12,7 @@ exports.run = async (client, message, args, db) => {
 
             if (q.data().prune === true) message.delete();
         }
-    }).catch(err => {
-        const errEmbed = new MessageEmbed()
-            .setAuthor('Error!', 'https://cdn0.iconfinder.com/data/icons/shift-free/32/Error-512.png')
-            .setDescription('An error occured while preforming this command!\nPlease visit the [Support server](https://discord.gg/6pjvxpR) to report this!')
-            .addField(`Error`, err.name)
-            .addField('Description', err.description)
-            .setColor('a81d0d')
-        message.channel.send(errEmbed);
-    });
+    }).catch(err => functions.errorMessage(message.channel, err));
     db.collection('guilds').doc(message.guild.id).get().then(async (q) => {
         if(q.exists && q.data().premium === false) return message.reply('You need the premium version of ZeroDay to use this command!')
     });

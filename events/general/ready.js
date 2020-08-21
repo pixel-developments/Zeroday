@@ -18,6 +18,6 @@ module.exports = async client => {
             .set("medium", 0.15)
             .set("high", 0.25);
 
-    let activities = [`over ${client.guilds.size} servers!`, "YouTube", "Vines"], i = 0;
-    setInterval(() => client.user.setActivity(`>help | ${activities[i++ % activities.length]}`, { type: 'WATCHING' }), 60000)
+    let activities = [`over ${client.guilds.cache.size} servers!`, `>help`], i = 0;
+    setInterval(() => client.user.setActivity(activities[i++ % activities.length], { type: 'WATCHING' }), 60000)
 }

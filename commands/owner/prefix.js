@@ -1,6 +1,7 @@
-const { MessageEmbed } = require('discord.js')
+const { MessageEmbed } = require('discord.js');
+const functions = require('../../functions');
 
-exports.run = async(client, message, args, db) => {
+exports.run = async (client, message, args, db) => {
     let prefix, logChannel, logsEnabled;
 
     await db.collection('guild_settings').doc(message.guild.id).get().then(async (q) => {
@@ -11,15 +12,7 @@ exports.run = async(client, message, args, db) => {
 
             if (q.data().prune === true) message.delete();
         }
-    }).catch(err => {
-        const errEmbed = new MessageEmbed()
-            .setAuthor('Error!', 'https://cdn0.iconfinder.com/data/icons/shift-free/32/Error-512.png')
-            .setDescription('An error occured while preforming this command!\nPlease visit the [Support server](https://discord.gg/6pjvxpR) to report this!')
-            .addField(`Error`, err.name)
-            .addField('Description', err.description)
-            .setColor('a81d0d')
-        message.channel.send(errEmbed);
-    });
+    }).catch(err => functions.errorMessage(message.channel, err));
 
     await db.collection('guilds').doc(message.guild.id).get().then(async (q) => {
         if (q.exists) {
@@ -32,7 +25,7 @@ exports.run = async(client, message, args, db) => {
                 'prefix': newPrefix
             }).then(() => message.channel.send(`Prefix changed to **${newPrefix}**`));
 
-            if(logsEnabled === true) {
+            if (logsEnabled === true) {
                 const logEmbed = new MessageEmbed()
                     .setAuthor('Prefix Update', client.user.displayAvatarURL())
                     .setColor('#ff5400')
@@ -40,24 +33,14 @@ exports.run = async(client, message, args, db) => {
 
                 logChannel.send(logEmbed);
             }
-        } else {
-            console.error('There is no server :(')
         }
-    }).catch(err => {
-        const errEmbed = new MessageEmbed()
-            .setAuthor('Error!', 'https://cdn0.iconfinder.com/data/icons/shift-free/32/Error-512.png')
-            .setDescription('An error occured while preforming this command!\nPlease visit the [Support server](https://discord.gg/6pjvxpR) to report this!')
-            .addField(`Error`, err.name)
-            .addField('Description', err.description)
-            .setColor('a81d0d')
-        message.channel.send(errEmbed);
-    });
+    }).catch(err => functions.errorMessage(message.channel, err));
 }
 
 exports.conf = {
     name: "prefix",
     description: "View or change the prefix",
-    usage: "prefix [prefix]",
+    usage: "<prefix>",
     category: "owner",
     aliases: []
 }

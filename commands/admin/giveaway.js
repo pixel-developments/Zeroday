@@ -1,5 +1,4 @@
 const { MessageEmbed } = require('discord.js')
-const fs = require('fs');
 const ms = require('ms');
 
 exports.run = async (client, message, args, db) => {
@@ -30,9 +29,9 @@ exports.run = async (client, message, args, db) => {
 
             if (!args[0]) return message.reply(`Invalid Arguments! | ${prefix}giveaway [time]`);
             if (!args[0].endsWith("d") && !args[0].endsWith("h") && !args[0].endsWith("m")) return message.reply(`You did not use the correct formatting for the time!`);
-            if(isNaN(args[0][0])) return message.reply(`That is not a number!`);
+            if (isNaN(args[0][0])) return message.reply(`That is not a number!`);
             let channel = message.mentions.channels.first();
-            if(!channel) return message.reply(`I could not find that channel!`);
+            if (!channel) return message.reply(`I could not find that channel!`);
             let prize = args.slice(2).join(" ");
             message.channel.send(`Giveaway created in ${channel}`);
 
